@@ -1,0 +1,145 @@
+header {
+    width: 1500px;
+    height: 141px;
+}
+.headerHigh {
+    width: 100%;
+    height: 86px;
+    display: flex;
+    flex-direction: row;
+}
+.headerLow {
+    width: 100%;
+    height: 54px;
+    display: flex;
+    flex-direction: row;
+    margin-left: 180px;
+}
+main {
+    margin-left: 200px;
+}
+.calendarBox {
+    width: 987px;
+    height: 579px;
+    background-color: white;
+    display: flex;
+    flex-wrap: wrap;
+    border: 1px solid rgb(23, 43, 81);
+}
+.dateBox{
+    width: 139px;
+    /* 141 - 2 (border) */
+    height: 106px;   
+    /* 76*5=380 */
+    display:flex;
+    flex-direction: row;
+    background-color: rgb(217,217,217);
+    border: 1px solid rgb(23, 43, 81);
+    margin-top: -2px;
+}
+.daysBox{
+    width: 139px;
+    height: 49px;
+    background-color: rgb(83,77, 120);
+    border: 1px solid rgb(23, 43, 81);
+}
+.todayBox{
+    width: 48px;
+    height: 48px;
+    background-color: rgb(166,166,166);
+    text-align: center;
+    line-height: 48px;    
+}
+.scheduleBox {
+    width: 69px;
+    height: 48px;
+    text-align: center;
+    line-height: 48px;
+    color: rgb(84, 130, 53);
+}
+.nameAreaId {
+    width: 134px;
+    height: 48px;
+    line-height: 48px;
+    text-align: center;
+    font-size: 22px;
+    background-color: rgb(79, 113, 190);
+    border: 2px solid rgb(23, 43, 81);
+    color: white;
+    margin-left: 200px;
+    margin-top: 16px;
+}
+.nameAreaName {
+    width: 134px;
+    height: 48px;
+    line-height: 48px;
+    text-align: center;
+    font-size: 22px;
+    background-color: rgb(79, 113, 190);
+    border: solid rgb(23, 43, 81);
+    color: white;
+    border-width: 2px 2px 2px 0;
+    margin-top: 16px;
+}
+.yearButtonArea {
+    display: flex;
+    flex-direction: column;
+    margin-left: 46px;
+}
+.yearButtonUp {
+    width: 29px;
+    height: 29px;
+    background-color: rgb(79, 113, 190);
+    border: 2px solid rgb(23, 43, 81);
+    color: white;
+    margin-top: 6px;
+}
+.yearButtonDown {
+    width: 29px;
+    height: 29px;
+    background-color: rgb(79, 113, 190);
+    border: 2px solid rgb(23, 43, 81);
+    color: white;
+    margin-top: 10px; 
+}
+.yearButtonUp:active {
+    background-color: rgb(33, 33, 255);
+}
+.yearButtonDown:active {
+    background-color: rgb(33, 33, 255);
+}
+.yearArea {
+    width: 197px;
+    height: 48px;
+    line-height: 48px;
+    text-align: center;
+    font-size: 22px;
+    background-color: rgb(79, 113, 190);
+    border: 2px solid rgb(23, 43, 81);
+    color: white;
+    margin-top: 16px;
+    margin-left: 15px;
+}
+.monthArea {
+    width: 101px;
+    height: 48px;
+    line-height: 48px;
+    text-align: center;
+    font-size: 22px;
+    background-color: rgb(79, 113, 190);
+    border: 2px solid rgb(23, 43, 81);
+    color: white;
+    margin-top: 16px;
+    margin-left: 15px;
+}
+.monthBox {
+    width: 60px;
+    height: 29px;
+    background-color: rgb(79, 113, 190);
+    border: 2px solid rgb(23, 43, 81);
+    color: white;
+    margin-right: 29px;
+}
+.monthBox:active {
+    background-color: rgb(33, 33, 255);
+}

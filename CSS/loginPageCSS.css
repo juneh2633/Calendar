@@ -1,0 +1,64 @@
+.loginBox {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    width: 900px;
+    height: 506px;
+    top:50%;
+    left:50%;
+    transform: translate(-50%, -50%);
+    border: 2px solid rgb(23, 43, 81);
+    background-color: rgb(165, 165, 165);
+}
+.loginHeader {
+    height: 27%;
+    display: flex;
+    justify-content: center;
+}
+.loginHeader h2 { 
+    background-color: rgb(79, 113, 190);
+    width: 192px;
+    height: 79px;
+    text-align: center;
+    color:white;
+    font-size: 36px;
+    line-height: 79px;
+    border: 2px solid rgb(23, 43, 81);
+    margin-top: 60px;
+}
+.loginMain {
+    display: flex;
+    flex-direction: column;
+    height: 35%;
+    margin-top: 40px;
+}
+.loginFooter {
+    display: flex;
+    flex-direction: row;
+    height:30%;
+    padding-left: 230px;
+}
+.loginMain .inputBox{
+    padding-bottom: 40px;
+    padding-left: 230px;
+}
+.loginButton {
+    display: inline;
+    width: 101px;
+    height: 54px;
+    border: 2px solid rgb(23, 43, 81);
+    background-color: rgb(79, 113, 190);
+    color: white;
+    text-align: center;
+    line-height: 54px;
+    font-size: 16px;
+    margin-left: 120px;
+}
+.loginPageTextArea{
+    width: 190px;
+    height: fit-content;
+    font-size: 18px;
+}
+.loginButton:active{
+    background-color: rgb(33, 33, 255);
+}

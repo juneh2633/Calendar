@@ -1,0 +1,168 @@
+#modalPage {
+    width: 709px;
+    height: 725px;
+    position: absolute;
+    display: none;
+    flex-direction: column;
+    bottom: 3%;
+    left: 25%;
+    background-color: rgb(166,166,166);
+    border: 2px solid rgb(23, 43, 81);
+}
+.modalHeader {
+    width: 709px;
+    height: 79px;
+    display: flex;
+    flex-direction: row;
+}
+.modalMain {
+    display: flex;
+    flex-direction: row;
+    margin-left: 50px;
+}
+.modalMainInput{
+    display: flex;
+}
+.modalDateBox {
+    width:134px;
+    height: 48px;
+    background-color: rgb(79, 113, 190);
+    border: 2px solid rgb(23, 43, 81);
+    color: white;
+    line-height: 48px;
+    text-align: center;
+    font-size: 26px;
+    margin-left: 16px;
+    margin-top: 8px;
+}
+
+.modalInputTime {
+    width: 118px;
+    height: 52x;
+    background-color: rgb(191, 191, 191);
+    color: black;
+    line-height: 52px;
+    text-align: center;
+    font-size: 14px;
+    border: solid rgb(23, 43, 81);
+    border-width: 2px 2px 2px 2px;
+}
+.modalInputSchedule {
+    width: 438px;
+    height: 52px;
+    background-color: rgb(191, 191, 191);
+    color: black;
+    line-height: 52px;
+    text-align: center;
+    font-size: 14px;
+    border: solid rgb(23, 43, 81);
+    border-width: 2px 2px 2px 0px;
+    
+}
+.modalInputButton{
+    width: 77px;
+    height: 42px;
+    background-color: rgb(79, 113, 190);
+    color: white;
+    line-height: 42px;
+    text-align: center;
+    font-size: 14px;
+    border: 2px solid rgb(23, 43, 81);
+    margin-top: 16px;
+    margin-left: 5px;
+}
+.modalFooter {
+    width: 662px;
+    height: 508px;
+    background-color: rgb(191, 191, 191);
+    border: 2px solid rgb(23, 43, 81);
+    margin-top: 21px;
+    margin-left: 28px;
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+}
+.modalFooter::-webkit-scrollbar {
+    width: 8px;
+}
+.modalFooter::-webkit-scrollbar-thumb {
+    background-color: rgb(79, 113, 190);
+    border: solid rgb(23, 43, 81);
+    border-width: 2px 0px 2px 2px;
+}
+.modalFooter::-webkit-scrollbar-track {
+    background-color: rgb(191, 191, 191);
+    border: solid rgb(23, 43, 81);
+    border-width: 0px 0px 0px 1px;
+}
+.scheduleBox {
+    width: 652px;
+    height: 42px;
+
+    display: flex;
+    flex-direction: row;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+.scheduleTime {
+    width: 104px;
+    height: 42px;
+    background-color: rgb(217,217,217);
+    color: black;
+    border: 2px solid rgb(23, 43, 81);
+    margin-left: 28px; 
+    line-height: 42px;
+    font-size: 12px;
+}
+.scheduleText {
+    width: 438px;
+    height: 42px;
+    background-color: rgb(217, 217, 217);
+    color: black;
+    border: solid rgb(23, 43, 81);
+    border-width: 2px 2px 2px 0px;
+    line-height: 42px;
+    font-size: 12px;
+}
+.scheduleUpdate {
+    width: 30px;
+    height: 42px;
+    background-color: rgb(79, 113, 190);
+    color: white;
+    font-size: 10px;
+    border: 2px solid rgb(23, 43, 81);
+    display: flex;
+    flex-direction: row;
+    white-space: normal;
+    margin-top: 2px;
+    margin-left: 5px;
+}
+.scheduleDelete {
+    width: 30px;
+    height: 42px;
+    background-color: rgb(79, 113, 190);
+    color: white;
+    font-size: 10px;
+    border: 2px solid rgb(23, 43, 81);
+    display: flex;
+    flex-direction: row;
+    white-space: normal;
+    margin-top: 2px;
+    margin-left: 4px;
+}
+.scheduleTextUpdate {
+    width: 433px;
+    height: 40px;
+    background-color: rgb(217, 217, 217);
+    color: black;
+    border: solid rgb(23, 43, 81);
+    border-width: 2px 2px 2px 0px;
+    line-height: 42px;
+    font-size: 12px;
+}
+.scheduleUpdate:active {
+    background-color: rgb(33, 33, 255);
+}
+.scheduleDelete:active {
+    background-color: rgb(33, 33, 255);
+}
