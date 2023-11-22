@@ -52,23 +52,23 @@
         <div class="infoArea">
             <div class="infoBox">
                 <div class="infoTextBox">아이디</div>
-                <div class="infoOutputBox"><%=idValue></div>
+                <div class="infoOutputBox"><%=idValue%></div>
             </div>
             <div class="infoBox">
                 <div class="infoTextBox">이름</div>
-                <div class="infoOutputBox"><%nameValue></div>
+                <div class="infoOutputBox"><%nameValue%></div>
             </div>
             <div class="infoBox">
                 <div class="infoTextBox">직급</div>
-                <div class="infoOutputBox"><%gradeValue></div>
+                <div class="infoOutputBox"><%gradeValue%></div>
             </div>
             <div class="infoBox">
                 <div class="infoTextBox">부서</div>
-                <div class="infoOutputBox"><%teamValue></div>
+                <div class="infoOutputBox"><%teamValue%></div>
             </div>
             <div class="infoBox">
                 <div class="infoTextBox">전화번호</div>
-                <div class="infoOutputBox"><%phonenumeberValue></div>
+                <div class="infoOutputBox"><%phonenumeberValue%></div>
             </div>
             <div class="infoButtonBox">
                 <input class="infoButton" type="button" value="내 정보 수정" onclick="location.href='infoUpdatePage.html'">
