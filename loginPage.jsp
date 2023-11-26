@@ -23,26 +23,28 @@
             <div class="loginMain">
                 <div class="inputBox">
                     <span class="inputBoxText">아이디</span>
-                    <input class="inputBoxInput" type='text' maxlength="30" onclick="checkSignup()">
+                    <input id="idValue" class="inputBoxInput" type='text' maxlength="30">
                 </div>
                 <div class="inputBox">
                     <span class="inputBoxText">비밀번호</span>
-                    <input class="inputBoxInput" type='password' maxlength="30">
+                    <input id="passwordValue" class="inputBoxInput" type='password' maxlength="30">
                 </div>
 
             </div>
             <div class="loginFooter">
                 <div class="loginPageTextArea">
+                    <form name="loginForm" action="mainPage.jsp">
                     <div>
-                        <a href="findIdPage.html">아이디</a>
-                        <a href="findPasswordPage.html">비밀번호</a>
+                        <a href="findIdPage.jsp">아이디</a>
+                        <a href="findPasswordPage.jsp">비밀번호</a>
                         찾기
                     </div>
                     <div>
-                        <a href="signupPage.html">회원가입</a>
+                        <a href="signupPage.jsp">회원가입</a>
                     </div>
+                    </form>
                 </div>
-                <input type="submit" class="loginButton" value="로그인">
+                <input type="button" class="loginButton" value="로그인" onclick="checkLogin()">
             </div>
     </main>
     <script src="JavaScript/checkException.js"></script>
