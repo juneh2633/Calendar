@@ -1,3 +1,11 @@
+<%@ page language="java" contentType="text/html" pageEncoding="utf-8" %>
+<%@ page import="java.sql.DriverManager" %>
+<%@ page import="java.sql.Connection" %>
+<%@ page import="java.sql.PreparedStatement" %>
+<%@ page import="java.sql.ResultSet" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="java.util.Date" %>
+<%@ page import="java.sql.Timestamp" %> 
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,7 +17,7 @@
 </head>
 <body>
     <main class="signupBox">
-        <form action="#">
+        <form name="signupForm" action="mainPage.jsp">
             <div class="signupHeader">
                 <h2>회원가입</h2>
             </div>
@@ -54,7 +62,7 @@
                         </select>
                     </div>
                     <div class="signupButtonBox">
-                        <input type="submit" class="signupButton" value="회원가입">
+                        <input type="button" class="signupButton" value="회원가입" onclick="checkSignup()">
                         <input type="button" class="signupButton" value="뒤로가기" onclick="history.back()">
                     </div>
                 </div>
@@ -66,6 +74,6 @@
     
 
 
-     
+     <script src="JavaScript/checkException.js"></script>
 </body>
 </html>
