@@ -6,6 +6,34 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="java.util.Date" %>
 <%@ page import="java.sql.Timestamp" %> 
+<%
+    String id = (String)session.getAttribute("id");
+    if(id == null){
+        out.print("<script>alert('로그인 해주세요.'); window.location.href='loginPage.html';</script>");
+    }
+    String phonenumber = (String)session.getAttribute("phonenumber");
+    String name = (String)session.getAttribute("name");
+    String grade = (String)session.getAttribute("grade");
+    String team = (String)session.getAttribute("team");
+    String gradeKr ="팀원";
+    String teamKr ="";
+    if(grade.equals("leader")){
+        gradeKr = "팀장";
+    }
+    if(team.equals("develope")){
+        teamKr = "개발팀";
+    }
+    else if(team.equals("design")){
+        teamKr = "디자인팀";
+    }
+    Class.forName("com.mysql.jdbc.Driver");
+    Date currentDate = new Date();
+    Timestamp currentTimestamp = new Timestamp(currentDate.getTime());
+    Connection connect = DriverManager.getConnection("jdbc:mysql://localhost/calendar", "juneh","2633");
+    String sql = "SELECT * FROM schedule WHERE id = ?";
+    
+    PreparedStatement query = connect.prepareStatement(sql);
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,8 +48,8 @@
 <body>
     <header>
         <div class="headerHigh">
-            <div class="nameAreaId">test1234</div>
-            <div class="nameAreaName">ㅇㅇㅇ</div>
+            <div class="nameAreaId"><%=id%></div>
+            <div class="nameAreaName"><%=name%></div>
             <div class="yearButtonArea">
                 <input class="yearButtonUp" type="button" value="↑" onclick="yearUp()">
                 <input class="yearButtonDown" type="button" value="↓" onclick="yearDown()">
@@ -60,26 +88,26 @@
         <div class="infoArea">
             <div class="infoBox">
                 <div class="infoTextBox">아이디</div>
-                <div class="infoOutputBox"><%=idValue%></div>
+                <div class="infoOutputBox"><%=id%></div>
             </div>
             <div class="infoBox">
                 <div class="infoTextBox">이름</div>
-                <div class="infoOutputBox"><%nameValue%></div>
+                <div class="infoOutputBox"><%=name%></div>
             </div>
             <div class="infoBox">
                 <div class="infoTextBox">직급</div>
-                <div class="infoOutputBox"><%gradeValue%></div>
+                <div class="infoOutputBox"><%=gradeKr%></div>
             </div>
             <div class="infoBox">
                 <div class="infoTextBox">부서</div>
-                <div class="infoOutputBox"><%teamValue%></div>
+                <div class="infoOutputBox"><%=teamKr%></div>
             </div>
             <div class="infoBox">
                 <div class="infoTextBox">전화번호</div>
-                <div class="infoOutputBox"><%phonenumeberValue%></div>
+                <div class="infoOutputBox"><%=phonenumber%></div>
             </div>
             <div class="infoButtonBox">
-                <input class="infoButton" type="button" value="내 정보 수정" onclick="location.href='infoUpdatePage.html'">
+                <input class="infoButton" type="button" value="내 정보 수정" onclick="location.href='infoUpdatePage.jsp'">
                 <input class="infoButton" type="button" value="로그아웃">
             </div>
             <div class="infoButtonBox">

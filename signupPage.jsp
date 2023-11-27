@@ -6,13 +6,7 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="java.util.Date" %>
 <%@ page import="java.sql.Timestamp" %> 
-<% 
-    request.setCharacterEncoding("utf-8");
-    String idValue = request.getParameter("idValue");
-    if(idValue != null && !idValue.isEmpty()){
 
-    }
-%>
 <!DOCTYPE html>
 <html lang="en">
 <head>

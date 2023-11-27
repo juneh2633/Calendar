@@ -22,8 +22,6 @@
     boolean loginCheck = false;
     if(result.next()&&passwordValue.equals( result.getString(2)) ){      
         loginCheck = true;
-        out.println("<script>alert('dld'); </script>");
-
         session.setAttribute("id", result.getString(1));
         session.setAttribute("phonenumber", result.getString(3));
         session.setAttribute("name", result.getString(4));
