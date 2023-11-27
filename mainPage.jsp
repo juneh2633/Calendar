@@ -5,7 +5,8 @@
 <%@ page import="java.sql.ResultSet" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="java.util.Date" %>
-<%@ page import="java.sql.Timestamp" %> 
+<%@ page import="java.sql.Timestamp" %>
+<%@ page import="java.time.LocalDate" %>
 <%
     String id = (String)session.getAttribute("id");
     if(id == null){
@@ -27,12 +28,14 @@
         teamKr = "디자인팀";
     }
     Class.forName("com.mysql.jdbc.Driver");
-    Date currentDate = new Date();
-    Timestamp currentTimestamp = new Timestamp(currentDate.getTime());
+    LocalDate today = LocalDate.now();
+    int currentMonth = today.getMonthValue();
+    int currentYear = today.getYear();
     Connection connect = DriverManager.getConnection("jdbc:mysql://localhost/calendar", "juneh","2633");
     String sql = "SELECT * FROM schedule WHERE id = ?";
-    
+
     PreparedStatement query = connect.prepareStatement(sql);
+
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -54,7 +57,7 @@
                 <input class="yearButtonUp" type="button" value="↑" onclick="yearUp()">
                 <input class="yearButtonDown" type="button" value="↓" onclick="yearDown()">
             </div>
-            <div id="yearArea" class="yearArea">2024년</div>
+            <div id="yearArea" class="yearArea"><%=currentYear%>년</div>
             <div id="monthArea" class="monthArea"></div>
             <input class="navAppearButton" type="button" value="메뉴" onclick="navAppearEvent()">
         </div>
@@ -169,10 +172,15 @@
         </div>
         <div class="modalMain">
             <div class="modalMainInput">
-                <input class="modalInputTime" type="time">
-                <input class="modalInputSchedule" type="text" maxlength="50">
+            <form name="inputScheduleForm" action="action/insertScheduleAction.jsp">
+                <input id="scheduleDay" name="scheduleDay" value="0" type="text" style="display: none;">
+                <input id="scheduleMonth" name="scheduleMonth" value="0" type="text" style="display: none;">
+                <input id="scheduleYear" name="scheduleYear" value="0" type="text" style="display: none;">
+                <input id="modalInputTime" name="modalInputTime" class="modalInputTime" type="time">
+                <input id="modalInputSchedule" name="modalInputSchedule" class="modalInputSchedule" type="text" maxlength="50">
+            </form>
             </div>
-            <input class="modalInputButton" type="submit" value="추가">
+            <input class="modalInputButton" type="button" value="추가" onclick="insertSchedule()">
         </div>
         <div class="modalFooter">
             <div class="scheduleBox">
@@ -201,6 +209,7 @@
     <script src="JavaScript/navJS.js"></script>
     <script src="JavaScript/modalJS.js"></script>
     <script src="JavaScript/updateScheduleJS.js"></script>
+    <script>makeDateBoxEvent("<%=currentMonth%>")</script>
 </body>
 
 </html>

@@ -56,8 +56,7 @@
     text-align: center;
     font-size: 14px;
     border: solid rgb(23, 43, 81);
-    border-width: 2px 2px 2px 0px;
-    
+    border-width: 2px 2px 2px 2px;
 }
 .modalInputButton{
     width: 77px;
