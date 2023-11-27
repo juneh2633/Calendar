@@ -21,19 +21,19 @@
                 <h2>로그인</h2>
             </div>
             <div class="loginMain">
+            <form name="loginForm" action="action/loginAction.jsp">
                 <div class="inputBox">
                     <span class="inputBoxText">아이디</span>
-                    <input id="idValue" class="inputBoxInput" type='text' maxlength="30">
+                    <input id="idValue" name="idValue" class="inputBoxInput" type='text' maxlength="30">
                 </div>
                 <div class="inputBox">
                     <span class="inputBoxText">비밀번호</span>
-                    <input id="passwordValue" class="inputBoxInput" type='password' maxlength="30">
+                    <input id="passwordValue" name="passwordValue"  class="inputBoxInput" type='password' maxlength="30">
                 </div>
-
+            </form>
             </div>
             <div class="loginFooter">
                 <div class="loginPageTextArea">
-                    <form name="loginForm" action="mainPage.jsp">
                     <div>
                         <a href="findIdPage.jsp">아이디</a>
                         <a href="findPasswordPage.jsp">비밀번호</a>
@@ -42,7 +42,6 @@
                     <div>
                         <a href="signupPage.jsp">회원가입</a>
                     </div>
-                    </form>
                 </div>
                 <input type="button" class="loginButton" value="로그인" onclick="checkLogin()">
             </div>

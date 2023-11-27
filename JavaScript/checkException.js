@@ -45,11 +45,11 @@ function checkLogin() {
     console.log(idValue);
     console.log(passwordValue);
     if (!pattern.test(idValue)) {
-        alert("아이디 형식이 올바르지 않습니다.");
+        alert("아이디를 확인해주세요");
         return;
     }
     if (!pattern.test(passwordValue)) {
-        alert("비밀번호 형식이 올바르지 않습니다.");
+        alert("비밀번호를 확인해주세요");
         return;
     }
     document.loginForm.submit();
