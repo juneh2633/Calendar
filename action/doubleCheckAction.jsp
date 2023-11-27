@@ -16,8 +16,8 @@
     query.setString(1, idValue);
     ResultSet result = query.executeQuery();
   
-    if(result.next()){
-        out.println("<script>alert('아이디가 존재합니다.'); history.back();</script>");
+    if(!result.next()){
+        out.println("<script>alert('사용가능한 아이디입니다.'); history.back();</script>");
         return;
     }
 %>
@@ -31,8 +31,7 @@
 <body>
     <div>loading</div>
     <script>
-        alert("사용가능한 아이디입니다.")
-        window.location.href = "../signupPage.jsp?idValue=" + '<%=idValue%>';
-        
+        alert("이미 존재하는 아이디입니다.");
+        location.href="../signupPage.jsp";
     </script>
 </body>

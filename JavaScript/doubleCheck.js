@@ -5,7 +5,7 @@ function doubleCheckEvent() {
         alert("아이디 형식이 올바르지 않습니다.");
         return;
     }   
-    //window.location.href = "../Calendar/action/doubleCheckAction.jsp?idValue=" + idValue;
+    window.location.href = "../Calendar/action/doubleCheckAction.jsp?idValue=" + idValue;
     var idBox = document.getElementById("idValue");
     idBox.readOnly = true;
     idBox.style.backgroundColor = "white";

@@ -10,7 +10,7 @@
     request.setCharacterEncoding("utf-8");
     String idValue = request.getParameter("idValue");
     if(idValue != null && !idValue.isEmpty()){
-    
+
     }
 %>
 <!DOCTYPE html>
