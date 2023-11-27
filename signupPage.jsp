@@ -6,6 +6,13 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="java.util.Date" %>
 <%@ page import="java.sql.Timestamp" %> 
+<% 
+    request.setCharacterEncoding("utf-8");
+    String idValue = request.getParameter("idValue");
+    if(idValue != null && !idValue.isEmpty()){
+    
+    }
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,7 +24,7 @@
 </head>
 <body>
     <main class="signupBox">
-        <form name="signupForm" action="mainPage.jsp">
+        <form name="signupForm" action="action/insertUserAction.jsp">
             <div class="signupHeader">
                 <h2>회원가입</h2>
             </div>
@@ -50,13 +57,13 @@
                     <div class="inputBox">
                         <span class="inputBoxText">직급</span>
                         <div class="radioText">팀장</div>
-                        <input name="grade" type='radio' value="팀장">
+                        <input name="gradeValue" type='radio' value="leader">
                         <div class="radioText">팀원</div>
-                        <input name="grade" type='radio' value="팀원" checked>
+                        <input name="gradeValue" type='radio' value="member" checked>
                     </div>
                     <div class="inputBox">
                         <span class="inputBoxText">부서</span>
-                        <select class="selectBox" name="team">
+                        <select class="selectBox" name="teamValue">
                             <option value="develope">개발팀</option>
                             <option value="design">디자인팀</option>
                         </select>
