@@ -50,12 +50,14 @@ main {
     text-align: center;
     line-height: 48px;    
 }
-.scheduleBox {
+.scheduleCountBox {
     width: 69px;
     height: 48px;
     text-align: center;
     line-height: 48px;
     color: rgb(84, 130, 53);
+    padding-left: 50px;
+    font-size: 24px;
 }
 .nameAreaId {
     width: 134px;

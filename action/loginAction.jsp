@@ -32,6 +32,7 @@
         out.println("<script>alert('아이디 또는 비밀번호가 잘못되었습니다.'); history.back();</script>");
         return;
     }
+    String nameValue = result.getString(4);
     query.close();
     connect.close();
 %>
@@ -47,6 +48,6 @@
     <script>
         alert("환영합니다.")
 
-        location.href = "../mainPage.jsp"
+        location.href = "../mainPage.jsp?idValue="+'<%=idValue%>'+"&nameValue="+'<%=nameValue%>';
     </script>
 </body>

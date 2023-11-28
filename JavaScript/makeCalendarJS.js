@@ -34,14 +34,18 @@ function makeDateBoxEvent(month) {
         }
         todayBox.innerHTML = idx;
         document.getElementById("dateBox" + idx).appendChild(todayBox);
-        var scheduleBox = document.createElement('div'); 
-        scheduleBox.id = "scheduleBox" + idx;
-        scheduleBox.className = "scheduleBox";
-        document.getElementById("todayBox" + idx).appendChild(scheduleBox);
+        var scheduleCountBox = document.createElement('div'); 
+        scheduleCountBox.id = "scheduleCountBox" + idx;
+        scheduleCountBox.className = "scheduleCountBox";
+        document.getElementById("todayBox" + idx).appendChild(scheduleCountBox);
     }
     check.setAttribute('value', '1');
     var monthArea = document.getElementById("monthArea");
     monthArea.innerText = month + "월";
+            var a=document.getElementById("scheduleCountBox8");
+    a.innerHTML = "2";
+            var b=document.getElementById("scheduleCountBox7");
+        b.innerHTML = "5";
 }
 
 function modalOpen(idx)  {

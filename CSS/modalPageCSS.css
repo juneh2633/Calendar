@@ -97,11 +97,11 @@
 .scheduleBox {
     width: 652px;
     height: 42px;
-
     display: flex;
     flex-direction: row;
     margin-top: 5px;
     margin-bottom: 5px;
+    text-align: center;
 }
 .scheduleTime {
     width: 104px;
