@@ -10,7 +10,8 @@
 <%
     String id = (String)session.getAttribute("id");
     if(id == null){
-        out.print("<script>alert('로그인 해주세요.'); window.location.href='loginPage.html';</script>");
+        out.print("<script>alert('로그인 해주세요.'); window.location.href='loginPage.jsp';</script>");
+        return;
     }
     String phonenumber = (String)session.getAttribute("phonenumber");
     String name = (String)session.getAttribute("name");

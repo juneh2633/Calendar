@@ -16,21 +16,17 @@
     String scheduleYear = request.getParameter("scheduleYear");
     String modalInputTime = request.getParameter("modalInputTime");
     String modalInputSchedule = request.getParameter("modalInputSchedule");
-
-
+    String inputDate = scheduleYear+"-"+scheduleMonth+"-"+scheduleDay+" "+modalInputTime;
     Class.forName("com.mysql.jdbc.Driver");
     Date currentDate = new Date();
     Timestamp currentTimestamp = new Timestamp(currentDate.getTime());
     Connection connect = DriverManager.getConnection("jdbc:mysql://localhost/calendar", "juneh","2633");
-    String sql = "INSERT INTO schedule (id, schedule_date, main_text, deleted_schedule) VALUES (?, ?, ?, ?)";
+    String sql = "INSERT INTO schedule (id, schedule_date, main_text, deleted_schedule) VALUES (?, ?, ?, 0)";
     PreparedStatement query = connect.prepareStatement(sql);
-    query.setString(1, idValue);
-    query.setString(2, passwordValue);
-    query.setString(3, phonenumberValue);
-    query.setString(4, nameValue);
-    query.setString(5, gradeValue);
-    query.setString(6, teamValue);
-    //  query 전송
+    query.setString(1, id);
+    query.setString(2, inputDate);
+    query.setString(3, modalInputSchedule);
+
 
     try{
         query.executeUpdate();
@@ -41,9 +37,7 @@
     }
     query.close();
     connect.close();
-    %>
-    <script>console.log("well")</script>
-    <%
+
 %>
 
 <head>
@@ -55,7 +49,6 @@
     <div>loading</div>
     <script>
         console.log("hi");
-        alert("회원가입에 성공하였습니다. 로그인 해주세요.")
-        location.href="../loginPage.jsp"
+        history.back();
     </script>
 </body>
