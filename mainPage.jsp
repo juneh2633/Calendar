@@ -65,18 +65,19 @@
     query.setString(1, pageId);
     ResultSet result = query.executeQuery();
     TreeMap<String,ArrayList<Schedule>> scheduleTree = new TreeMap<>();
-    int[][][] scheduleCount = new int[2200][13][32];
     while(result.next()){
-        String scheduleDate=result.getString(3);
+        int deletedCheck = result.getInt(6);
+        if(deletedCheck == 1){
+            continue;
+        }
+        String scheduleDate = result.getString(3);
         String[] parts = scheduleDate.split(" ");
         String datePart = parts[0];
         String timePart = parts[1]; 
-
         String[] dateParts = parts[0].split("-");
         int year = Integer.parseInt(dateParts[0]);
         int month = Integer.parseInt(dateParts[1]);
         int day = Integer.parseInt(dateParts[2]);
-        scheduleCount[year][month][day]++;
         Schedule scheduleElement = new Schedule(timePart, result.getString(4));
         if (scheduleTree.containsKey(datePart)) {
             ArrayList<Schedule> getList = scheduleTree.get(datePart);

@@ -14,6 +14,11 @@ function modalAppearEvent(idx,month) {
 function modalDisappearEvent() {
     var modalPage = document.getElementById("modalPage");
     modalPage.style.display = "none";    
+    var modalFooter = document.createElement('div'); 
+    modalFooter.id = "modalFooter";
+    modalFooter.className = "modalFooter"; 
+    document.getElementById("modalPage").appendChild(modalFooter);
+    document.getElementById("modalFooter").remove();
 }
 function insertSchedule() {
     var modalInputTime = document.getElementById("modalInputTime");
@@ -37,26 +42,20 @@ function showSchedule(idx, month) {
         return;
     }   
     
-    document.getElementById("modalFooter").remove();;
-
-    
     var modalFooter = document.createElement('div'); 
     modalFooter.id = "modalFooter";
     modalFooter.className = "modalFooter"; 
     document.getElementById("modalPage").appendChild(modalFooter);
+    document.getElementById("modalFooter").remove();;
     console.log("스케쥴리스트", scheduleList);
     for (var idx = 0; idx < scheduleList.length; idx++){
         var scheduleElementTime = scheduleList[idx].scheduleTime.slice(0, -3);;
         var scheduleElementText = scheduleList[idx].scheduleText;
+        //
         var scheduleBox = document.createElement('div'); 
         scheduleBox.id = "scheduleBox" + idx;
         scheduleBox.className = "scheduleBox";  
         document.getElementById("modalFooter").appendChild(scheduleBox);
-        //
-        var scheduleUpdateBox = document.createElement('div'); 
-        scheduleUpdateBox.id = "scheduleUpdateBox" + idx;
-        scheduleUpdateBox.className = "scheduleUpdateBox";  
-        document.getElementById("modalFooter").appendChild(scheduleUpdateBox);
         //
         var scheduleTime = document.createElement('div'); 
         scheduleTime.id = "scheduleTime"+ idx;
@@ -84,13 +83,9 @@ function showSchedule(idx, month) {
         scheduleDelete.value = "삭제";
         document.getElementById("scheduleBox" + idx).appendChild(scheduleDelete);
         //
-        var scheduleBox = document.createElement('div'); 
-        scheduleBox.id = "scheduleBox" + idx;
-        scheduleBox.className = "scheduleBox";  
-        document.getElementById("modalFooter").appendChild(scheduleBox);
         var scheduleUpdateBox = document.createElement('div'); 
         scheduleUpdateBox.id = "scheduleUpdateBox" + idx;
         scheduleUpdateBox.className = "scheduleUpdateBox";  
-        document.getElementById("modalFooter").appendChild(scheduleUpdateBox);  
+        document.getElementById("modalFooter").appendChild(scheduleUpdateBox);
     }
 }
