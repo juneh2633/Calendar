@@ -8,6 +8,7 @@
 <%@ page import="java.sql.Timestamp" %>
 <%@ page import="java.time.LocalDate" %>
 <%@ page import="java.util.TreeMap" %>
+<%@ page import="org.json.simple.JSONObject" %>
 <%
     class Schedule {
         private String scheduleTime;
@@ -62,11 +63,18 @@
     query.setString(1, pageId);
     ResultSet result = query.executeQuery();
     TreeMap<String,ArrayList<Schedule>> scheduleTree = new TreeMap<>();
+    int[][][] scheduleCount = new int[2200][13][32];
     while(result.next()){
         String scheduleDate=result.getString(3);
         String[] parts = scheduleDate.split(" ");
         String datePart = parts[0];
         String timePart = parts[1]; 
+
+        String[] dateParts = parts[0].split("-");
+        int year = Integer.parseInt(dateParts[0]);
+        int month = Integer.parseInt(dateParts[1]);
+        int day = Integer.parseInt(dateParts[2]);
+        scheduleCount[year][month][day]++;
         Schedule scheduleElement = new Schedule(timePart, result.getString(4));
         if (scheduleTree.containsKey(datePart)) {
             ArrayList<Schedule> getList = scheduleTree.get(datePart);
@@ -77,8 +85,16 @@
             scheduleTree.put(datePart, newList);
         }
     }
+    JSONObject scheduleTreeJson = new JSONObject(scheduleTree);
 %>
-
+<script>
+    var scheduleTreeJson = '<%=scheduleTreeJson%>';
+    var pageYear = '<%=currentYear%>';
+    var pageMonth = '<%=currentMonth%>';
+    console.log(pageYear);
+    console.log(pageMonth);
+    console.log(scheduleTreeJson);
+</script>
 <!DOCTYPE html>
 <html lang="kr">
 <head>
@@ -91,6 +107,7 @@
     <title>Document</title>
 </head>
 <body>
+
     <header>
         <div class="headerHigh">
             <div class="nameAreaId"><%=id%></div>
@@ -246,8 +263,9 @@
     <script src="JavaScript/modalJS.js"></script>
     <script src="JavaScript/updateScheduleJS.js"></script>
     <script src="JavaScript/grantWrite.js"></script>
-    <script>makeDateBoxEvent("<%=currentMonth%>")</script>
+    <script>makeDateBoxEvent(pageMonth)</script>
     <script>grantWrite("<%=grantWriteCheck%>")</script>
+
 
 </body>
 

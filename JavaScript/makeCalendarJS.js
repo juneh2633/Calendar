@@ -1,3 +1,4 @@
+
 function makeDateBoxEvent(month) {
     var day = 0;
     if (month == '2') {
@@ -52,12 +53,16 @@ function modalOpen(idx)  {
     modalAppearEvent(idx);
 }
 function yearUp() {
+    pageYear = parseInt(pageYear) + 1;
     var yearArea = document.getElementById("yearArea");
     var year = yearArea.innerHTML.slice(0, -1);
-    yearArea.innerText = parseInt(year)+1 + "년";    
+    yearArea.innerText = parseInt(year) + 1 + "년";  
+    console.log(pageYear);
 }
 function yearDown() {
+    pageYear = parseInt(pageYear) - 1;
     var yearArea = document.getElementById("yearArea");
     var year = yearArea.innerHTML.slice(0, -1);
-    yearArea.innerText = parseInt(year)-1 + "년";    
+    yearArea.innerText = parseInt(year) - 1 + "년";    
+    console.log(pageYear);
 }
