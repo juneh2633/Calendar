@@ -22,9 +22,9 @@ function makeDateBoxEvent(month) {
         dateBox.id = "dateBox" + idx;
         dateBox.className = "dateBox";
         if (day >= idx) {
-            dateBox.onclick = (function(index) {
-                return function() { modalOpen(index); };
-            })(idx);           
+            dateBox.onclick = (function(index,month) {
+                return function() { modalOpen(index,month); };
+            })(idx,month);           
         }
         document.getElementById("calendarBox").appendChild(dateBox);
         var todayBox = document.createElement('div');
@@ -47,31 +47,23 @@ function makeDateBoxEvent(month) {
 
     
 }
-function modalOpen(idx)  {
-    modalAppearEvent(idx);
-}
+
 function yearUp() {
     pageYear = parseInt(pageYear) + 1;
     var yearArea = document.getElementById("yearArea");
     var year = yearArea.innerHTML.slice(0, -1);
     yearArea.innerText = parseInt(year) + 1 + "년";  
-    console.log(pageYear);
+    makeDateBoxEvent(1);
 }
 function yearDown() {
     pageYear = parseInt(pageYear) - 1;
     var yearArea = document.getElementById("yearArea");
     var year = yearArea.innerHTML.slice(0, -1);
     yearArea.innerText = parseInt(year) - 1 + "년";    
-    console.log(pageYear);
+    makeDateBoxEvent(1);
 }
-
 function scheduleCountInput(idx,month) {
-    var idxString = idx;
-    if (idx < 10) {
-        idxString = '0' + idx;
-    }
-    var dateString = pageYear + "-" + month + "-" + idxString;
-    var scheduleList= scheduleTreeJson[dateString];
+    var scheduleList= scheduleTreeJson[dateToString(idx,month)];
     if (scheduleList == null) {
         return;
     }
@@ -80,4 +72,16 @@ function scheduleCountInput(idx,month) {
         scheduleCount = '9+';
     }
     document.getElementById("scheduleCountBox" + idx).innerHTML = scheduleCount;
+}
+function modalOpen(idx,month) {
+    modalAppearEvent(idx,month);
+    console.log("모달창 달 확인", month);
+}
+function dateToString(day,month) {
+    var dayString = day;
+    if (day < 10) {
+        dayString = '0' + day;
+    }
+    var s = pageYear + "-" + month + "-" + dayString; 
+    return s;
 }

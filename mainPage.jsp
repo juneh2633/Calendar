@@ -21,13 +21,11 @@
         public String getScheduleTime() {
             return scheduleTime;
         }
-
         public String getScheduleText() {
             return scheduleText;
         }
         public String toString() {
             return "{\"scheduleTime\":\"" + scheduleTime + "\", \"scheduleText\":\"" + scheduleText + "\"}";
-   
         }
     }
     String id = (String)session.getAttribute("id");
@@ -95,14 +93,14 @@
 <script>
     var scheduleTreeJson = <%=scheduleTreeJson%>;
     var pageYear = <%=currentYear%>;
-    var pageMonth = '<%=currentMonth%>';
+    var pageMonth = <%=currentMonth%>;
     console.log(pageYear);
     console.log(pageMonth);
     console.log(scheduleTreeJson); 
     console.log(scheduleTreeJson["2023-11-05"]);
     console.log(scheduleTreeJson["2023-11-05"].length);
-
 </script>
+
 <!DOCTYPE html>
 <html lang="kr">
 <head>
@@ -181,44 +179,11 @@
                 <input class="infoButton" type="button" value="로그아웃">
             </div>
             <div class="infoButtonBox">
-                <input class="myInfoButton" type="button" value="내 일정 보기">
+                <input class="myInfoButton" type="button" value="내 일정 보기" onclick="location.href='mainPage.jsp?idValue=<%=id%>&nameValue=<%=name%>'">
             </div>
         </div>
         <div class="myTeamArea">
             <div class="teamBox">
-                <div class="teamIdBox"></div>
-                <div class="teamNameBox"></div>
-            </div>
-            <div class="teamBox">
-                <div class="teamIdBox"></div>
-                <div class="teamNameBox"></div>
-            </div>
-            <div class="teamBox">
-                <div class="teamIdBox"></div>
-                <div class="teamNameBox"></div>
-            </div><div class="teamBox">
-                <div class="teamIdBox"></div>
-                <div class="teamNameBox"></div>
-            </div>
-            <div class="teamBox">
-                <div class="teamIdBox"></div>
-                <div class="teamNameBox"></div>
-            </div>
-            <div class="teamBox">
-                <div class="teamIdBox"></div>
-                <div class="teamNameBox"></div>
-            </div><div class="teamBox">
-                <div class="teamIdBox"></div>
-                <div class="teamNameBox"></div>
-            </div>
-            <div class="teamBox">
-                <div class="teamIdBox"></div>
-                <div class="teamNameBox"></div>
-            </div>
-            <div class="teamBox">
-                <div class="teamIdBox"></div>
-                <div class="teamNameBox"></div>
-            </div><div class="teamBox">
                 <div class="teamIdBox"></div>
                 <div class="teamNameBox"></div>
             </div>
@@ -249,7 +214,7 @@
             </div>
             <input id="modalInputButton" class="modalInputButton" type="button" value="추가" onclick="insertSchedule()">
         </div>
-        <div class="modalFooter">
+        <div id="modalFooter" class="modalFooter">
             <div class="scheduleBox">
                 <div class="scheduleTime">오전 9:00</div>
                 <div class="scheduleText">정수론1</div>
