@@ -39,16 +39,14 @@ function makeDateBoxEvent(month) {
         scheduleCountBox.id = "scheduleCountBox" + idx;
         scheduleCountBox.className = "scheduleCountBox";
         document.getElementById("todayBox" + idx).appendChild(scheduleCountBox);
+        scheduleCountInput(idx,month)
     }
     check.setAttribute('value', '1');
     var monthArea = document.getElementById("monthArea");
     monthArea.innerText = month + "월";
-            var a=document.getElementById("scheduleCountBox8");
-    a.innerHTML = "2";
-            var b=document.getElementById("scheduleCountBox7");
-        b.innerHTML = "5";
-}
 
+    
+}
 function modalOpen(idx)  {
     modalAppearEvent(idx);
 }
@@ -65,4 +63,21 @@ function yearDown() {
     var year = yearArea.innerHTML.slice(0, -1);
     yearArea.innerText = parseInt(year) - 1 + "년";    
     console.log(pageYear);
+}
+
+function scheduleCountInput(idx,month) {
+    var idxString = idx;
+    if (idx < 10) {
+        idxString = '0' + idx;
+    }
+    var dateString = pageYear + "-" + month + "-" + idxString;
+    var scheduleList= scheduleTreeJson[dateString];
+    if (scheduleList == null) {
+        return;
+    }
+    var scheduleCount = scheduleList.length;
+    if (scheduleCount >= 10) {
+        scheduleCount = '9+';
+    }
+    document.getElementById("scheduleCountBox" + idx).innerHTML = scheduleCount;
 }

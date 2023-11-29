@@ -25,6 +25,10 @@
         public String getScheduleText() {
             return scheduleText;
         }
+        public String toString() {
+            return "{\"scheduleTime\":\"" + scheduleTime + "\", \"scheduleText\":\"" + scheduleText + "\"}";
+   
+        }
     }
     String id = (String)session.getAttribute("id");
     if(id == null){
@@ -86,14 +90,18 @@
         }
     }
     JSONObject scheduleTreeJson = new JSONObject(scheduleTree);
+    String scheduleTreeJsonString = scheduleTreeJson.toJSONString();
 %>
 <script>
-    var scheduleTreeJson = '<%=scheduleTreeJson%>';
-    var pageYear = '<%=currentYear%>';
+    var scheduleTreeJson = <%=scheduleTreeJson%>;
+    var pageYear = <%=currentYear%>;
     var pageMonth = '<%=currentMonth%>';
     console.log(pageYear);
     console.log(pageMonth);
-    console.log(scheduleTreeJson);
+    console.log(scheduleTreeJson); 
+    console.log(scheduleTreeJson["2023-11-05"]);
+    console.log(scheduleTreeJson["2023-11-05"].length);
+
 </script>
 <!DOCTYPE html>
 <html lang="kr">
