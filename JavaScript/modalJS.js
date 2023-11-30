@@ -113,27 +113,27 @@ function makeScheduleBox(idx, scheduleElementTime, scheduleElementText, uid) {
     saveUid.style.display = "none";
     document.getElementById("scheduleBox" + idx).appendChild(saveUid);
     document.getElementById("uid" + idx).innerHTML = uid;
-
-    var scheduleUpdate = document.createElement('input'); 
-    scheduleUpdate.id = "scheduleUpdate" + idx;
-    scheduleUpdate.className = "scheduleUpdate";
-    scheduleUpdate.type = "button";
-    scheduleUpdate.value = "수정";
-    scheduleUpdate.onclick = function() {
-        scheduleUpdateEvent(idx);
-    };
-    document.getElementById("scheduleBox" + idx).appendChild(scheduleUpdate);
-    
-    var scheduleDelete = document.createElement('input'); 
-    scheduleDelete.id = "scheduleDelete" + idx;
-    scheduleDelete.className = "scheduleDelete";
-    scheduleDelete.type = "button";
-    scheduleDelete.value = "삭제";
-    scheduleDelete.onclick = function () {
-        scheduleDeleteEvent(idx);
-    }    
-    document.getElementById("scheduleBox" + idx).appendChild(scheduleDelete);
-
+    if (grantWrite == true) {
+        var scheduleUpdate = document.createElement('input'); 
+        scheduleUpdate.id = "scheduleUpdate" + idx;
+        scheduleUpdate.className = "scheduleUpdate";
+        scheduleUpdate.type = "button";
+        scheduleUpdate.value = "수정";
+        scheduleUpdate.onclick = function() {
+            scheduleUpdateEvent(idx);
+        };
+        document.getElementById("scheduleBox" + idx).appendChild(scheduleUpdate);
+        
+        var scheduleDelete = document.createElement('input'); 
+        scheduleDelete.id = "scheduleDelete" + idx;
+        scheduleDelete.className = "scheduleDelete";
+        scheduleDelete.type = "button";
+        scheduleDelete.value = "삭제";
+        scheduleDelete.onclick = function () {
+            scheduleDeleteEvent(idx);
+        }    
+        document.getElementById("scheduleBox" + idx).appendChild(scheduleDelete);
+    }
 }
 function makeScheduleUpdateBox(idx, scheduleElementTime, scheduleElementText, uid) {
     var scheduleUpdateBox = document.createElement('div'); 

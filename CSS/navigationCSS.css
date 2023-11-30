@@ -1,12 +1,12 @@
 nav {
+    position: fixed;
+    top: 0;
+    right: 0;    
+    display: none;
     width: 316px;
     height: 713px;
-    background-color: rgb(166,166,166);
-    border: 2px solid rgb(23, 43, 81);
-    position: fixed;
-    display: none;
-    top: 0;
-    right: 0;
+    background-color: var(--color-gray);
+    border: 2px solid var(--color-solid);
     margin-top: 16px;
 }
 .navAppearButton {
@@ -15,8 +15,8 @@ nav {
     line-height: 48px;
     text-align: center;
     font-size: 16px;
-    background-color: rgb(79, 113, 190);
-    border: solid rgb(23, 43, 81);
+    background-color: var(--color-input);
+    border: solid var(--color-solid);
     border-width: 2px 0px 2px 2px;
     color: white;
     position: fixed;
@@ -26,13 +26,13 @@ nav {
     margin-top: 16px;
 }
 .navAppearButton:active {
-    background-color: rgb(33, 33, 255);
+    background-color: var(--color-button-active);
 }
 .infoArea {
     width: 286px;
     height: 286px;
-    background-color: rgb(191,191,191);
-    border: 2px solid rgb(23, 43, 81);
+    background-color: var(--color-191);
+    border: 2px solid var(--color-solid);
     display: flex;
     flex-direction: column;
     margin-left: 13px;
@@ -49,8 +49,8 @@ nav {
 .infoTextBox {
     width: 77px;
     height: 29px;
-    border: 2px solid rgb(23, 43, 81);
-    background-color: rgb(79, 113, 190);
+    border: 2px solid var(--color-solid);
+    background-color: var(--color-input);
     color: white; 
     line-height: 29px;
     font-size: 12px;
@@ -59,9 +59,9 @@ nav {
 .infoOutputBox {
     width: 154px;
     height: 29px;
-    border: solid rgb(23, 43, 81);
+    border: solid var(--color-solid);
     border-width: 2px 2px 2px 0px;
-    background-color: rgb(79, 113, 190);
+    background-color: var(--color-input);
     color: white; 
     line-height: 29px;
     font-size: 10px;
@@ -78,21 +78,21 @@ nav {
 .infoButton {
     width: 77px;
     height: 33px;
-    border: 2px solid rgb(23, 43, 81);
-    background-color: rgb(79, 113, 190);    
+    border: 2px solid var(--color-solid);
+    background-color: var(--color-input);    
     margin-right: 14px;
     color: white; 
     line-height: 29px;
     font-size: 10px;
 }
 .infoButton:active {
-    background-color: rgb(33, 33, 255);
+    background-color: var(--color-button-active);
 }
 .myInfoButton {
     width: 101px;
     height: 33px;
-    border: 2px solid rgb(23, 43, 81);
-    background-color: rgb(79, 113, 190);    
+    border: 2px solid var(--color-solid);
+    background-color: var(--color-input);    
     margin-right: 14px;
     margin-left: 40px;
     color: white; 
@@ -101,13 +101,13 @@ nav {
     text-align: center;
 }
 .myInfoButton:active {
-    background-color: rgb(33, 33, 255);
+    background-color: var(--color-button-active);
 }
 .myTeamArea {
     width: 286px;
     height: 286px;
-    background-color: rgb(191, 191, 191);
-    border: 2px solid rgb(23, 43, 81);
+    background-color: var(--color-191);
+    border: 2px solid var(--color-solid);
     display: flex;
     flex-direction: column;
     margin-left: 13px;
@@ -118,13 +118,13 @@ nav {
 }
 .myTeamArea::-webkit-scrollbar {
     width: 10px;
-    border: 2px solid rgb(23, 43, 81);
+    border: 2px solid var(--color-solid);
 }
 .myTeamArea::-webkit-scrollbar-thumb {
-    background-color: rgb(79, 113, 190);
+    background-color: var(--color-input);
 }
 .myTeamArea::-webkit-scrollbar-track {
-    background-color: rgb(191, 191, 191);
+    background-color: var(--color-191);
 }
 .teamBox {
     width: 100%;
@@ -137,8 +137,8 @@ nav {
 .teamIdBox {
     width: 77px;
     height: 29px;
-    border: 2px solid rgb(23, 43, 81);
-    background-color: rgb(79, 113, 190);
+    border: 2px solid var(--color-solid);
+    background-color: var(--color-input);
     color: white;
     line-height: 29px;
     font-size: 12px;
@@ -147,9 +147,9 @@ nav {
 .teamNameBox {
     width: 154px;
     height: 29px;
-    border: solid rgb(23, 43, 81);
+    border: solid var(--color-solid);
     border-width: 2px 2px 2px 0px;
-    background-color: rgb(79, 113, 190);
+    background-color: var(--color-input);
     color: white;
     line-height: 29px;
     font-size: 10px;

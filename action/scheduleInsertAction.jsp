@@ -47,7 +47,6 @@
 <body>
     <div>loading</div>
     <script>
-        console.log("hi");
         location.href = '../mainPage.jsp?idValue=<%=id%>&nameValue=<%=name%>';
     </script>
 </body>
