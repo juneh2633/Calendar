@@ -1,23 +1,27 @@
-function modalAppearEvent(idx,month) {
+function modalAppearEvent(idx, month) {
+     console.log("ㅎㅎ",grantWrite);
+    if (grantWrite == true) {
+        makeScheduleInputForm();  
+        var scheduleDay = document.getElementById("scheduleDay");
+        var scheduleMonth = document.getElementById("scheduleMonth");
+        var scheduleYear = document.getElementById("scheduleYear");
+        scheduleDay.value = idx;
+        scheduleMonth.value = document.getElementById("monthArea").innerText.slice(0, -1);
+        scheduleYear.value = document.getElementById("yearArea").innerText.slice(0, -1); 
+    }
+    showSchedule(idx, month);
     var modalPage = document.getElementById("modalPage");
     modalPage.style.display = "flex";
     var modalDate = document.getElementById("modalDate");
     modalDate.innerHTML = idx + "일";
-    var scheduleDay = document.getElementById("scheduleDay");
-    var scheduleMonth = document.getElementById("scheduleMonth");
-    var scheduleYear = document.getElementById("scheduleYear");
-    scheduleDay.value = idx;
-    scheduleMonth.value = document.getElementById("monthArea").innerText.slice(0, -1);
-    scheduleYear.value = document.getElementById("yearArea").innerText.slice(0, -1);
-    showSchedule(idx, month);
+   
 }
 function modalDisappearEvent() {
     var modalPage = document.getElementById("modalPage");
     modalPage.style.display = "none";    
-    var modalFooter = document.createElement('div'); 
-    modalFooter.id = "modalFooter";
-    modalFooter.className = "modalFooter"; 
-    document.getElementById("modalPage").appendChild(modalFooter);
+    if (grantWrite == true) {
+        document.getElementById("modalMain").remove();
+    }   
     document.getElementById("modalFooter").remove();
 }
 function scheduleUpdateEvent(idx) {
@@ -34,6 +38,14 @@ function scheduleConfirmEvent(idx) {
     var uid = document.getElementById("uid" + idx).innerText;
     var scheduleUpdateTime = document.getElementById("scheduleUpdateTime" + idx).value;
     var scheduleUpdateText = document.getElementById("scheduleUpdateText" + idx).value
+    if (scheduleUpdateTime.value == "") {
+        alert("시간을 넣어주세요");
+        return;
+    }
+    if (scheduleUpdateText.value=="") {
+        alert("일정을 넣어주세요");
+        return;
+    }
     location.href = "action/scheduleUpdateAction.jsp?uid="+uid+"&scheduleUpdateTime="+scheduleUpdateTime+"&scheduleUpdateText="+scheduleUpdateText;    
 }
 function scheduleCancleEvent(idx) {
@@ -42,9 +54,6 @@ function scheduleCancleEvent(idx) {
     scheduleBox.style.display = "flex";
     scheduleUpdateBox.style.display = "none";
 }
-
-
-
 function insertScheduleEvent() {
     var modalInputTime = document.getElementById("modalInputTime");
     if (modalInputTime.value == "") {
@@ -60,18 +69,17 @@ function insertScheduleEvent() {
     console.log(modalInputSchedule.value);
     document.inputScheduleForm.submit();
 }
+
 function showSchedule(idx, month) {
     var scheduleList = scheduleTreeJson[dateToString(idx, month)];
-    if (scheduleList == null) {
-        //일정이 없는경우
-        return;
-    }   
-    
     var modalFooter = document.createElement('div'); 
     modalFooter.id = "modalFooter";
     modalFooter.className = "modalFooter"; 
     document.getElementById("modalPage").appendChild(modalFooter);
-    document.getElementById("modalFooter").remove();;
+    if (scheduleList == null) {
+        //일정이 없는경우
+        return;
+    }   
     console.log("스케쥴리스트", scheduleList);
     for (var idx = 0; idx < scheduleList.length; idx++){
         var scheduleElementTime = scheduleList[idx].scheduleTime.slice(0, -3);
@@ -82,7 +90,6 @@ function showSchedule(idx, month) {
     }
 }
 function makeScheduleBox(idx, scheduleElementTime, scheduleElementText, uid) {
-
     var scheduleBox = document.createElement('div'); 
     scheduleBox.id = "scheduleBox" + idx;
     scheduleBox.className = "scheduleBox";  
@@ -174,4 +181,78 @@ function makeScheduleUpdateBox(idx, scheduleElementTime, scheduleElementText, ui
         scheduleCancleEvent(idx);    
     }
     document.getElementById("scheduleUpdateBox" + idx).appendChild(scheduleCancel);
+}
+function makeScheduleInputForm() {
+    var modalMain = document.createElement("div");
+    modalMain.id = "modalMain";
+    modalMain.className = "modalMain";
+    document.getElementById("modalPage").appendChild(modalMain);
+    var modalMain = document.getElementById("modalMain");
+    // 새로운 div 요소를 생성
+    var modalMainInput = document.createElement('div');
+    modalMainInput.id = "modalMainInput";
+    modalMainInput.className = "modalMainInput";
+    // form 요소 생성
+    var form = document.createElement('form');
+    form.name = "inputScheduleForm";
+    form.action = "action/scheduleInsertAction.jsp";
+    // 각 input 요소 생성 및 설정
+    var scheduleDayInput = document.createElement('input');
+    scheduleDayInput.id = "scheduleDay";
+    scheduleDayInput.name = "scheduleDay";
+    scheduleDayInput.value = "0";
+    scheduleDayInput.type = "text";
+    scheduleDayInput.style.display = "none";
+
+    var scheduleMonthInput = document.createElement('input');
+    scheduleMonthInput.id = "scheduleMonth";
+    scheduleMonthInput.name = "scheduleMonth";
+    scheduleMonthInput.value = "0";
+    scheduleMonthInput.type = "text";
+    scheduleMonthInput.style.display = "none";
+
+    var scheduleYearInput = document.createElement('input');
+    scheduleYearInput.id = "scheduleYear";
+    scheduleYearInput.name = "scheduleYear";
+    scheduleYearInput.value = "0";
+    scheduleYearInput.type = "text";
+    scheduleYearInput.style.display = "none";
+
+    var modalInputTimeInput = document.createElement('input');
+    modalInputTimeInput.id = "modalInputTime";
+    modalInputTimeInput.name = "modalInputTime";
+    modalInputTimeInput.className = "modalInputTime";
+    modalInputTimeInput.type = "time";
+
+    var modalInputScheduleInput = document.createElement('input');
+    modalInputScheduleInput.id = "modalInputSchedule";
+    modalInputScheduleInput.name = "modalInputSchedule";
+    modalInputScheduleInput.className = "modalInputSchedule";
+    modalInputScheduleInput.type = "text";
+    modalInputScheduleInput.maxLength = "50";
+    modalInputScheduleInput.placeholder = "50자 제한";
+    // input 요소들을 form에 추가
+    form.appendChild(scheduleDayInput);
+    form.appendChild(scheduleMonthInput);
+    form.appendChild(scheduleYearInput);
+    form.appendChild(modalInputTimeInput);
+    form.appendChild(modalInputScheduleInput);
+
+    // form을 modalMainInput에 추가
+    modalMainInput.appendChild(form);
+
+    // modalMainInput을 modalMain에 추가
+    modalMain.appendChild(modalMainInput);
+
+    // 추가 버튼 생성
+    var modalInputButton = document.createElement('input');
+    modalInputButton.id = "modalInputButton";
+    modalInputButton.className = "modalInputButton";
+    modalInputButton.type = "button";
+    modalInputButton.value = "추가";
+    modalInputButton.onclick = insertScheduleEvent;
+
+    // modalMain에 추가 버튼 추가
+    modalMain.appendChild(modalInputButton);
+
 }

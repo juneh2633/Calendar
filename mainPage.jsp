@@ -33,18 +33,18 @@
             return "{\"scheduleTime\":\"" + scheduleTime + "\", \"scheduleText\":\"" + scheduleText + "\",\"scheduleUid\":\"" + scheduleUid + "\"}";
         }
     }
+
     String id = (String)session.getAttribute("id");
     if(id == null){
         out.print("<script>alert('로그인 해주세요.'); window.location.href='loginPage.jsp';</script>");
         return;
-    }
+    } 
     String phonenumber = (String)session.getAttribute("phonenumber");
     String name = (String)session.getAttribute("name");
     String grade = (String)session.getAttribute("grade");
     String team = (String)session.getAttribute("team");
     String gradeKr ="팀원";
     String teamKr ="";
-    
     if(grade.equals("leader")){
         gradeKr = "팀장";
     }
@@ -54,12 +54,14 @@
     else if(team.equals("design")){
         teamKr = "디자인팀";
     }
+    //일정수정권한부여
     Boolean grantWriteCheck = false;
     String pageId = request.getParameter("idValue");
     String pageName = request.getParameter("nameValue");
     if(pageId.equals(id)){
         grantWriteCheck = true;
     }
+    //스케줄표 전처리
     Class.forName("com.mysql.jdbc.Driver");
     LocalDate today = LocalDate.now();
     int currentMonth = today.getMonthValue();
@@ -95,18 +97,38 @@
             scheduleTree.put(datePart, newList);
         }
     }
+    query.close();
+    
     JSONObject scheduleTreeJson = new JSONObject(scheduleTree);
     String scheduleTreeJsonString = scheduleTreeJson.toJSONString();
+    //
+    ArrayList<String>teamId = new ArrayList<>();
+    ArrayList<String>teamName = new ArrayList<>();
+    if(grade.equals("leader")){
+        String teamSql = "SELECT * FROM user WHERE team = ? AND grade = 'member' AND user_deleted = 0 ORDER BY name ASC";
+        PreparedStatement teamQuery = connect.prepareStatement(teamSql);
+        teamQuery.setString(1, team);
+        ResultSet teamResult = teamQuery.executeQuery();
+        while(teamResult.next()){
+            teamId.add("'"+teamResult.getString(1)+"'");
+            teamName.add("'"+teamResult.getString(4)+"'");
+        }
+        teamQuery.close();
+    }
+    connect.close();
 %>
 <script>
     var scheduleTreeJson = <%=scheduleTreeJson%>;
     var pageYear = <%=currentYear%>;
     var pageMonth = <%=currentMonth%>;
+    var teamId = <%=teamId%>;
+    var teamName = <%=teamName%>;
+    var grantWrite = <%=grantWriteCheck%>;
+    console.log(grantWrite);
     console.log(pageYear);
     console.log(pageMonth);
     console.log(scheduleTreeJson); 
-    console.log(scheduleTreeJson["2023-11-05"]);
-    console.log(scheduleTreeJson["2023-11-05"].length);
+
 </script>
 
 <!DOCTYPE html>
@@ -121,11 +143,10 @@
     <title>Document</title>
 </head>
 <body>
-
     <header>
         <div class="headerHigh">
-            <div class="nameAreaId"><%=id%></div>
-            <div class="nameAreaName"><%=name%></div>
+            <div class="nameAreaId"><%=pageId%></div>
+            <div class="nameAreaName"><%=pageName%></div>
             <div class="yearButtonArea">
                 <input class="yearButtonUp" type="button" value="↑" onclick="yearUpEvent()">
                 <input class="yearButtonDown" type="button" value="↓" onclick="yearDownEvent()">
@@ -190,52 +211,13 @@
                 <input class="myInfoButton" type="button" value="내 일정 보기" onclick="location.href='mainPage.jsp?idValue=<%=id%>&nameValue=<%=name%>'">
             </div>
         </div>
-        <div class="myTeamArea">
-            <div class="teamBox">
-                <div class="teamIdBox"></div>
-                <div class="teamNameBox"></div>
-            </div>
-            <div class="teamBox">
-                <div class="teamIdBox"></div>
-                <div class="teamNameBox"></div>
-            </div>
-            <div class="teamBox">
-                <div class="teamIdBox"></div>
-                <div class="teamNameBox"></div>
-            </div>
+        <div id="myTeamArea" class="myTeamArea">
         </div>
     </nav>
     <div id="modalPage">
         <div class="modalHeader">
             <input class="disappearButton" type="button" value="X" onclick="modalDisappearEvent()">
             <div id="modalDate" class="modalDateBox"></div>
-        </div>
-        <div class="modalMain">
-            <div id="modalMainInput" class="modalMainInput">
-            <form name="inputScheduleForm" action="action/scheduleInsertAction.jsp">
-                <input id="scheduleDay" name="scheduleDay" value="0" type="text" style="display: none;">
-                <input id="scheduleMonth" name="scheduleMonth" value="0" type="text" style="display: none;">
-                <input id="scheduleYear" name="scheduleYear" value="0" type="text" style="display: none;">
-                <input id="modalInputTime" name="modalInputTime" class="modalInputTime" type="time">
-                <input id="modalInputSchedule" name="modalInputSchedule" class="modalInputSchedule" type="text" maxlength="50">
-            </form>
-            </div>
-            <input id="modalInputButton" class="modalInputButton" type="button" value="추가" onclick="insertScheduleEvent()">
-        </div>
-        <div id="modalFooter" class="modalFooter">
-            <div class="scheduleBox">
-                <div class="scheduleTime">오전 9:00</div>
-                <div class="scheduleText">정수론1</div>
-                <input class="scheduleUpdate" type="button" value="수정">
-                <input class="scheduleDelete" type="button" value="삭제">
-            </div>
-            <div class="scheduleUpdateBox" style="display: none;">
-                <input class="scheduleUpdateTime" type="time">
-                <input class="scheduleUpdateText" type="text" maxlength="50">
-                <input class="scheduleUpdate" type="button" value="확인" onclick="">
-                <input class="scheduleDelete" type="button" value="취소">
-            </div>
-
         </div>
 
     </div>
@@ -245,8 +227,8 @@
     <script src="JavaScript/updateScheduleJS.js"></script>
     <script src="JavaScript/grantWrite.js"></script>
     <script>makeDateBoxEvent(pageMonth)</script>
-    <script>grantWrite("<%=grantWriteCheck%>")</script>
-
+    <!-- <script>grantWrite("<%=grantWriteCheck%>")</script> -->
+    <script>makeTeamArea()</script>
 
 </body>
 
