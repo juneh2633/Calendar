@@ -149,9 +149,28 @@
     margin-top: 2px;
     margin-left: 4px;
 }
-.scheduleTextUpdate {
-    width: 433px;
-    height: 40px;
+.scheduleUpdateBox {
+    width: 652px;
+    height: 42px;
+    display: flex;
+    flex-direction: row;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    text-align: center;
+}
+.scheduleUpdateTime {
+    width: 108px;
+    height: 46px;
+    background-color: rgb(217, 217, 217);
+    color: black;
+    border: 2px solid rgb(23, 43, 81);
+    margin-left: 28px;
+    line-height: 42px;
+    font-size: 12px;
+}
+.scheduleUpdateText {
+    width: 440px;
+    height: 46px;
     background-color: rgb(217, 217, 217);
     color: black;
     border: solid rgb(23, 43, 81);
@@ -159,6 +178,7 @@
     line-height: 42px;
     font-size: 12px;
 }
+
 .scheduleUpdate:active {
     background-color: rgb(33, 33, 255);
 }

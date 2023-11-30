@@ -5,7 +5,6 @@
 <%@ page import="java.sql.PreparedStatement" %>
 <%@ page import="java.sql.ResultSet" %>
 <%@ page import="java.util.ArrayList" %>
-<!-- 시간 -->
 <%@ page import="java.util.Date" %>
 <%@ page import="java.sql.Timestamp" %> 
 <% //jsp 작성 

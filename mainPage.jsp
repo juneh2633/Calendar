@@ -13,10 +13,12 @@
     class Schedule {
         private String scheduleTime;
         private String scheduleText;
+        private int scheduleUid;
 
-        public Schedule(String scheduleTime, String scheduleText) {
+        public Schedule(String scheduleTime, String scheduleText, int scheduleUid) {
             this.scheduleTime = scheduleTime;
             this.scheduleText = scheduleText;
+            this.scheduleUid = scheduleUid;
         }
         public String getScheduleTime() {
             return scheduleTime;
@@ -24,8 +26,11 @@
         public String getScheduleText() {
             return scheduleText;
         }
+        public int getScheduleUid() {
+            return scheduleUid;
+        }
         public String toString() {
-            return "{\"scheduleTime\":\"" + scheduleTime + "\", \"scheduleText\":\"" + scheduleText + "\"}";
+            return "{\"scheduleTime\":\"" + scheduleTime + "\", \"scheduleText\":\"" + scheduleText + "\",\"scheduleUid\":\"" + scheduleUid + "\"}";
         }
     }
     String id = (String)session.getAttribute("id");
@@ -74,15 +79,17 @@
         String[] parts = scheduleDate.split(" ");
         String datePart = parts[0];
         String timePart = parts[1]; 
+        String uidPart = (parts.length > 2) ? parts[2] : "";
         String[] dateParts = parts[0].split("-");
         int year = Integer.parseInt(dateParts[0]);
         int month = Integer.parseInt(dateParts[1]);
         int day = Integer.parseInt(dateParts[2]);
-        Schedule scheduleElement = new Schedule(timePart, result.getString(4));
+        Schedule scheduleElement = new Schedule(timePart, result.getString(4), result.getInt(1));
         if (scheduleTree.containsKey(datePart)) {
             ArrayList<Schedule> getList = scheduleTree.get(datePart);
             getList.add(scheduleElement);
-        } else {
+        } 
+        else {
             ArrayList<Schedule> newList = new ArrayList<>();
             newList.add(scheduleElement);
             scheduleTree.put(datePart, newList);
@@ -120,8 +127,8 @@
             <div class="nameAreaId"><%=id%></div>
             <div class="nameAreaName"><%=name%></div>
             <div class="yearButtonArea">
-                <input class="yearButtonUp" type="button" value="↑" onclick="yearUp()">
-                <input class="yearButtonDown" type="button" value="↓" onclick="yearDown()">
+                <input class="yearButtonUp" type="button" value="↑" onclick="yearUpEvent()">
+                <input class="yearButtonDown" type="button" value="↓" onclick="yearDownEvent()">
             </div>
             <div id="yearArea" class="yearArea"><%=currentYear%>년</div>
             <div id="monthArea" class="monthArea"></div>
@@ -205,7 +212,7 @@
         </div>
         <div class="modalMain">
             <div id="modalMainInput" class="modalMainInput">
-            <form name="inputScheduleForm" action="action/insertScheduleAction.jsp">
+            <form name="inputScheduleForm" action="action/scheduleInsertAction.jsp">
                 <input id="scheduleDay" name="scheduleDay" value="0" type="text" style="display: none;">
                 <input id="scheduleMonth" name="scheduleMonth" value="0" type="text" style="display: none;">
                 <input id="scheduleYear" name="scheduleYear" value="0" type="text" style="display: none;">
@@ -213,7 +220,7 @@
                 <input id="modalInputSchedule" name="modalInputSchedule" class="modalInputSchedule" type="text" maxlength="50">
             </form>
             </div>
-            <input id="modalInputButton" class="modalInputButton" type="button" value="추가" onclick="insertSchedule()">
+            <input id="modalInputButton" class="modalInputButton" type="button" value="추가" onclick="insertScheduleEvent()">
         </div>
         <div id="modalFooter" class="modalFooter">
             <div class="scheduleBox">
@@ -223,8 +230,8 @@
                 <input class="scheduleDelete" type="button" value="삭제">
             </div>
             <div class="scheduleUpdateBox" style="display: none;">
-                <input class="scheduleTime" type="time">
-                <input class="scheduleTextUpdate" type="text" maxlength="50">
+                <input class="scheduleUpdateTime" type="time">
+                <input class="scheduleUpdateText" type="text" maxlength="50">
                 <input class="scheduleUpdate" type="button" value="확인" onclick="">
                 <input class="scheduleDelete" type="button" value="취소">
             </div>

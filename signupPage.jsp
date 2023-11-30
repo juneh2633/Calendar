@@ -18,7 +18,7 @@
 </head>
 <body>
     <main class="signupBox">
-        <form name="signupForm" action="action/insertUserAction.jsp">
+        <form name="signupForm" action="action/userInsertAction.jsp">
             <div class="signupHeader">
                 <h2>회원가입</h2>
             </div>

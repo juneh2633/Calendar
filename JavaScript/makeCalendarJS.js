@@ -44,18 +44,15 @@ function makeDateBoxEvent(month) {
     check.setAttribute('value', '1');
     var monthArea = document.getElementById("monthArea");
     monthArea.innerText = month + "월";
-
-    
 }
-
-function yearUp() {
+function yearUpEvent() {
     pageYear = parseInt(pageYear) + 1;
     var yearArea = document.getElementById("yearArea");
     var year = yearArea.innerHTML.slice(0, -1);
     yearArea.innerText = parseInt(year) + 1 + "년";  
     makeDateBoxEvent(1);
 }
-function yearDown() {
+function yearDownEvent() {
     pageYear = parseInt(pageYear) - 1;
     var yearArea = document.getElementById("yearArea");
     var year = yearArea.innerHTML.slice(0, -1);
