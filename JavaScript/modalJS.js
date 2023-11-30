@@ -14,10 +14,12 @@ function modalAppearEvent(idx, month) {
     modalPage.style.display = "flex";
     var modalDate = document.getElementById("modalDate");
     modalDate.innerHTML = idx + "일";
+    document.getElementById("modalOverlay").style.display = "block";
 }
 function modalDisappearEvent() {
     var modalPage = document.getElementById("modalPage");
     modalPage.style.display = "none";    
+    document.getElementById("modalOverlay").style.display = "none";
     if (grantWrite == true) {
         document.getElementById("modalMain").remove();
     }   

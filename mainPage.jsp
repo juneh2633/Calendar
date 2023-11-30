@@ -214,6 +214,7 @@
         <div id="myTeamArea" class="myTeamArea">
         </div>
     </nav>
+    <div id="modalOverlay"></div>
     <div id="modalPage">
         <div class="modalHeader">
             <input class="disappearButton" type="button" value="X" onclick="modalDisappearEvent()">

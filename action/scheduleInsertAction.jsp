@@ -11,6 +11,7 @@
 <% 
     request.setCharacterEncoding("utf-8"); //전페이지 request 
     String id = (String)session.getAttribute("id");
+    String name = (String)session.getAttribute("name");
     String scheduleDay = request.getParameter("scheduleDay");
     String scheduleMonth = request.getParameter("scheduleMonth");
     String scheduleYear = request.getParameter("scheduleYear");
@@ -47,6 +48,6 @@
     <div>loading</div>
     <script>
         console.log("hi");
-        history.back();
+        location.href = '../mainPage.jsp?idValue=<%=id%>&nameValue=<%=name%>';
     </script>
 </body>

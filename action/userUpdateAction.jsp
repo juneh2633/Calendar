@@ -23,42 +23,51 @@
     nameValue = nameValue.replaceAll("\\s", "");
 
     if(idValue.length() <= 5){
-        out.println("<script>alert('오류'); history.back();</script>");       
+        out.println("<script>alert('오류'); history.back();</script>");
+        return;    
     }
     if(idValue.length()>30){
-        out.println("<script>alert('오류'); history.back();</script>");      
+        out.println("<script>alert('오류'); history.back();</script>");
+        return;      
     }
     if(passwordValue.length()<=5){
         out.println("<script>alert('오류'); history.back();</script>");
+        return;
     }
     if(passwordValue.length()>30){
         out.println("<script>alert('오류'); history.back();</script>");
+        return;
     }
     if (!passwordValue.equals(passwordCheckValue)) {        
         out.println("<script>alert('오류'); history.back();</script>");
+        return;
     }
     if(phonenumberValue.length()!=11){
         out.println("<script>alert('오류'); history.back();</script>");
+        return;
     }
     if(nameValue.length()==0){
         out.println("<script>alert('오류'); history.back();</script>");
+        return;
     }
     if(nameValue.length()>30){
         out.println("<script>alert('오류'); history.back();</script>");
+        return;
     }
+
     Class.forName("com.mysql.jdbc.Driver");
     Date currentDate = new Date();
     Timestamp currentTimestamp = new Timestamp(currentDate.getTime());
     Connection connect = DriverManager.getConnection("jdbc:mysql://localhost/calendar", "juneh","2633");
-    String sql = "INSERT INTO user (id, password, phonenumber, name, grade, team, user_deleted) VALUES (?, ?, ?, ?, ?, ? , 0)";
+    String sql = "UPDATE user SET password = ?, phonenumber = ?, name = ?, grade = ?, team = ? WHERE id = ? ";
     PreparedStatement query = connect.prepareStatement(sql);
-    query.setString(1, idValue);
-    query.setString(2, passwordValue);
-    query.setString(3, phonenumberValue);
-    query.setString(4, nameValue);
-    query.setString(5, gradeValue);
-    query.setString(6, teamValue);
-    //  query 전송
+    
+    query.setString(1, passwordValue);
+    query.setString(2, phonenumberValue);
+    query.setString(3, nameValue);
+    query.setString(4, gradeValue);
+    query.setString(5, teamValue);
+    query.setString(6, idValue);
 
     try{
         query.executeUpdate();
@@ -70,7 +79,7 @@
     query.close();
     connect.close();
     %>
-    <script>console.log("sign up well")</script>
+    <script>console.log("well")</script>
     <%
 %>
 
@@ -83,7 +92,7 @@
     <div>loading</div>
     <script>
         console.log("hi");
-        alert("회원가입에 성공하였습니다. 로그인 해주세요.")
-        location.href="../loginPage.jsp"
+        alert("수정완료되었습니다.")
+        location.href="../infoUpdatePage.jsp"
     </script>
 </body>

@@ -16,16 +16,13 @@
     String name = (String)session.getAttribute("name");
     String grade = (String)session.getAttribute("grade");
     String team = (String)session.getAttribute("team");
-    String gradeKr ="팀원";
-    String teamKr ="";
+    String gradeLeaderCheck ="";
+    String gradeMemberCheck = "";
     if(grade.equals("leader")){
-        gradeKr = "팀장";
+        gradeLeaderCheck="checked"; 
     }
-    if(team.equals("develope")){
-        teamKr = "개발팀";
-    }
-    else if(team.equals("design")){
-        teamKr = "디자인팀";
+    else{
+        gradeMemberCheck="checked";
     }
 
 %>
@@ -40,7 +37,7 @@
 </head>
 <body>
     <main class="signupBox">
-        <form action="#">
+        <form name="userUpdateForm" action="action/userUpdateAction.jsp">
             <div class="signupHeader">
                 <h2>내 정보 수정</h2>
             </div>
@@ -53,28 +50,28 @@
                     </div>
                     <div class="inputBox">
                         <span class="inputBoxText">비밀번호</span>
-                        <input name="passwordValue" class="inputBoxInput" type='password' placeholder="6~30 영어,숫자" maxlength="30">
+                        <input id="passwordValue" name="passwordValue" class="inputBoxInput" type='password' placeholder="6~30 영어,숫자" maxlength="30">
                     </div>
                     <div class="inputBox">
                         <span class="inputBoxText">확인</span>
-                        <input name="passwordCheckValue" class="inputBoxInput" type='password' placeholder="6~30 영어,숫자" maxlength="30">
+                        <input id="passwordCheckValue" name="passwordCheckValue" class="inputBoxInput" type='password' placeholder="6~30 영어,숫자" maxlength="30">
                     </div>
                     <div class="inputBox">
                         <span  class="inputBoxText">전화번호</span>
-                        <input name="phonenumberValue" class="inputBoxInput" type='text' placeholder="(-)없이 11자리 숫자" maxlength="11" value= <%=phonenumber%>>
+                        <input id="phonenumberValue" name="phonenumberValue" class="inputBoxInput" type='text' placeholder="(-)없이 11자리 숫자" maxlength="11" value= <%=phonenumber%>>
                     </div>
                     <div class="inputBox">
                         <span  class="inputBoxText">이름</span>
-                        <input name="nameValue" class="inputBoxInput" type='text' placeholder="6~30 한글,영어" maxlength="30" value= <%=name%> >
+                        <input id="nameValue" name="nameValue" class="inputBoxInput" type='text' placeholder="6~30 한글,영어" maxlength="30" value= <%=name%> >
                     </div>
                 </div>
                 <div class="signupMainRight">
                     <div class="inputBox">
                         <span class="inputBoxText">직급</span>
                         <div class="radioText">팀장</div>
-                        <input name="grade" type='radio' value="팀장">
+                        <input name="grade" type='radio' value="팀장" <%=gradeLeaderCheck%> >
                         <div class="radioText">팀원</div>
-                        <input name="grade" type='radio' value="팀원" checked>
+                        <input name="grade" type='radio' value="팀원" <%=gradeMemberCheck%> >
                     </div>
                     <div class="inputBox">
                         <span class="inputBoxText">부서</span>
@@ -84,7 +81,7 @@
                         </select>
                     </div>
                     <div class="signupButtonBox">
-                        <input type="submit" class="signupButton" value="수정하기">
+                        <input type="button" class="signupButton" value="수정하기" onclick="checkUserUpdate()">
                         <input type="button" class="signupButton" value="뒤로가기" onclick="history.back()">
                     </div>
                 </div>
@@ -95,7 +92,7 @@
     </main>
     
 
-
+    <script src="JavaScript/checkException.js"></script>
     <script>
         var idBox = document.getElementById("idValue");
         idBox.readOnly = true;

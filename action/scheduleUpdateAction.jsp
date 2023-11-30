@@ -9,6 +9,8 @@
 <%@ page import="java.sql.Timestamp" %> 
 <% //jsp 작성 
     request.setCharacterEncoding("utf-8");
+    String id = (String)session.getAttribute("id");
+    String name = (String)session.getAttribute("name");
     String uid = request.getParameter("uid");
     String scheduleUpdateTime = request.getParameter("scheduleUpdateTime");
     String scheduleUpdateText = request.getParameter("scheduleUpdateText");
@@ -59,6 +61,6 @@
 <body>
     <div>loading</div>
     <script>
-        history.back();
+        location.href = '../mainPage.jsp?idValue=<%=id%>&nameValue=<%=name%>';
     </script>
 </body>

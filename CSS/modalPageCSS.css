@@ -8,6 +8,7 @@
     left: 25%;
     background-color: rgb(166,166,166);
     border: 2px solid rgb(23, 43, 81);
+    z-index: 2;
 }
 .modalHeader {
     width: 709px;
@@ -93,6 +94,16 @@
     background-color: rgb(191, 191, 191);
     border: solid rgb(23, 43, 81);
     border-width: 0px 0px 0px 1px;
+}
+#modalOverlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); 
+    z-index: 1;
 }
 .scheduleBox {
     width: 652px;

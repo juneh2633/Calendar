@@ -9,15 +9,15 @@
 <%@ page import="java.sql.Timestamp" %> 
 <% //jsp 작성 
     request.setCharacterEncoding("utf-8");
+    String id = (String)session.getAttribute("id");
+    String name = (String)session.getAttribute("name");
     String uid = request.getParameter("uid");
     String passwordValue = request.getParameter("passwordValue");
     Class.forName("com.mysql.jdbc.Driver");
     Connection connect = DriverManager.getConnection("jdbc:mysql://localhost/calendar", "juneh","2633");
-
     String sql = "UPDATE schedule SET deleted_schedule = 1 WHERE schedule_uid = ? ";
     PreparedStatement query = connect.prepareStatement(sql);
     query.setString(1, uid);
-
     try{
         query.executeUpdate();
     } catch (Exception e) {
@@ -41,6 +41,6 @@
 <body>
     <div>loading</div>
     <script>
-        history.back();
+        location.href = '../mainPage.jsp?idValue=<%=id%>&nameValue=<%=name%>';
     </script>
 </body>
