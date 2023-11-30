@@ -1,4 +1,3 @@
-
 function makeDateBoxEvent(month) {
     var day = 0;
     if (month == '2') {

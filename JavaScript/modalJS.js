@@ -14,7 +14,6 @@ function modalAppearEvent(idx, month) {
     modalPage.style.display = "flex";
     var modalDate = document.getElementById("modalDate");
     modalDate.innerHTML = idx + "일";
-   
 }
 function modalDisappearEvent() {
     var modalPage = document.getElementById("modalPage");
@@ -32,7 +31,7 @@ function scheduleUpdateEvent(idx) {
 }
 function scheduleDeleteEvent(idx) {
     var uid = document.getElementById("uid" + idx).innerText;
-    location.href = "action/scheduleDeleteAction.jsp?uid="+uid;
+    location.href = "action/scheduleDeleteAction.jsp?uid=" + uid;
 } 
 function scheduleConfirmEvent(idx) {
     var uid = document.getElementById("uid" + idx).innerText;

@@ -205,7 +205,7 @@
             </div>
             <div class="infoButtonBox">
                 <input class="infoButton" type="button" value="내 정보 수정" onclick="location.href='infoUpdatePage.jsp'">
-                <input class="infoButton" type="button" value="로그아웃">
+                <input class="infoButton" type="button" value="로그아웃" onclick="location.href='action/logoutAction.jsp'">
             </div>
             <div class="infoButtonBox">
                 <input class="myInfoButton" type="button" value="내 일정 보기" onclick="location.href='mainPage.jsp?idValue=<%=id%>&nameValue=<%=name%>'">
@@ -225,9 +225,7 @@
     <script src="JavaScript/navJS.js"></script>
     <script src="JavaScript/modalJS.js"></script>
     <script src="JavaScript/updateScheduleJS.js"></script>
-    <script src="JavaScript/grantWrite.js"></script>
     <script>makeDateBoxEvent(pageMonth)</script>
-    <!-- <script>grantWrite("<%=grantWriteCheck%>")</script> -->
     <script>makeTeamArea()</script>
 
 </body>

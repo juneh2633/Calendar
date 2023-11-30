@@ -6,6 +6,29 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="java.util.Date" %>
 <%@ page import="java.sql.Timestamp" %> 
+<%
+    String id = (String)session.getAttribute("id");
+    if(id == null){
+        out.print("<script>alert('로그인 해주세요.'); window.location.href='loginPage.jsp';</script>");
+        return;
+    } 
+    String phonenumber = (String)session.getAttribute("phonenumber");
+    String name = (String)session.getAttribute("name");
+    String grade = (String)session.getAttribute("grade");
+    String team = (String)session.getAttribute("team");
+    String gradeKr ="팀원";
+    String teamKr ="";
+    if(grade.equals("leader")){
+        gradeKr = "팀장";
+    }
+    if(team.equals("develope")){
+        teamKr = "개발팀";
+    }
+    else if(team.equals("design")){
+        teamKr = "디자인팀";
+    }
+
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,7 +49,7 @@
                 <div class="signupMainLeft">
                     <div class="inputBox">
                         <span class="inputBoxText">아이디</span>
-                        <input name="idValue" class="inputBoxInput" type='text' placeholder="6~30 영어,숫자" maxlength="30">
+                        <input id="idValue" name="idValue" class="inputBoxInput" type='text' placeholder="6~30 영어,숫자" maxlength="30" value=<%=id%> >
                     </div>
                     <div class="inputBox">
                         <span class="inputBoxText">비밀번호</span>
@@ -38,11 +61,11 @@
                     </div>
                     <div class="inputBox">
                         <span  class="inputBoxText">전화번호</span>
-                        <input name="phonenumberValue" class="inputBoxInput" type='text' placeholder="(-)없이 11자리 숫자" maxlength="11">
+                        <input name="phonenumberValue" class="inputBoxInput" type='text' placeholder="(-)없이 11자리 숫자" maxlength="11" value= <%=phonenumber%>>
                     </div>
                     <div class="inputBox">
                         <span  class="inputBoxText">이름</span>
-                        <input name="nameValue" class="inputBoxInput" type='text' placeholder="6~30 한글,영어" maxlength="30">
+                        <input name="nameValue" class="inputBoxInput" type='text' placeholder="6~30 한글,영어" maxlength="30" value= <%=name%> >
                     </div>
                 </div>
                 <div class="signupMainRight">
@@ -73,6 +96,11 @@
     
 
 
-
+    <script>
+        var idBox = document.getElementById("idValue");
+        idBox.readOnly = true;
+        idBox.style.backgroundColor = "white";
+        idBox.style.color = "black";
+    </script>
 </body>
 </html>
