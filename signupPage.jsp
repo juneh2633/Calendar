@@ -12,8 +12,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link type="text/css" rel="stylesheet" href="CSS/elementCSS.css">
-    <link type="text/css" rel="stylesheet" href="CSS/signupPageCSS.css">
+    <link type="text/css" rel="stylesheet" href="CSS/element.css">
+    <link type="text/css" rel="stylesheet" href="CSS/signupPage.css">
     <title>Document</title>
 </head>
 <body>
@@ -44,7 +44,7 @@
                     </div>
                     <div class="inputBox">
                         <span  class="inputBoxText">이름</span>
-                        <input id="nameValue" name="nameValue" class="inputBoxInput" type='text' placeholder="6~30 한글,영어" maxlength="30">
+                        <input id="nameValue" name="nameValue" class="inputBoxInput" type='text' placeholder="1~30 한글,영어" maxlength="30">
                     </div>
                 </div>
                 <div class="signupMainRight">

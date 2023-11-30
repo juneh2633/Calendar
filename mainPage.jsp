@@ -136,10 +136,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link type="text/css" rel="stylesheet" href="CSS/elementCSS.css">
-    <link type="text/css" rel="stylesheet" href="CSS/mainPageCSS.css">
-    <link type="text/css" rel="stylesheet" href="CSS/navigationCSS.css">
-    <link type="text/css" rel="stylesheet" href="CSS/modalPageCSS.css">
+    <link type="text/css" rel="stylesheet" href="CSS/element.css">
+    <link type="text/css" rel="stylesheet" href="CSS/mainPage.css">
+    <link type="text/css" rel="stylesheet" href="CSS/navigation.css">
+    <link type="text/css" rel="stylesheet" href="CSS/modalPage.css">
     <title>Document</title>
 </head>
 <body>
@@ -222,10 +222,9 @@
         </div>
 
     </div>
-    <script src="JavaScript/makeCalendarJS.js"></script>
-    <script src="JavaScript/navJS.js"></script>
-    <script src="JavaScript/modalJS.js"></script>
-    <script src="JavaScript/updateScheduleJS.js"></script>
+    <script src="JavaScript/makeCalendar.js"></script>
+    <script src="JavaScript/nav.js"></script>
+    <script src="JavaScript/modal.js"></script>
     <script>makeDateBoxEvent(pageMonth)</script>
     <script>makeTeamArea()</script>
 

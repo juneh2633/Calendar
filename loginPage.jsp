@@ -12,8 +12,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link type="text/css" rel="stylesheet" href="CSS/elementCSS.css">
-    <link type="text/css" rel="stylesheet" href="CSS/loginPageCSS.css">
+    <link type="text/css" rel="stylesheet" href="CSS/element.css">
+    <link type="text/css" rel="stylesheet" href="CSS/loginPage.css">
     <title>Document</title>
 </head>
 <body>

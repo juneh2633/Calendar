@@ -38,6 +38,42 @@ function checkSignup() {
     }    
     document.signupForm.submit();
 }
+function checkFindId() {
+    var nameValue = document.getElementById("nameValue").value;
+    var phonenumberValue = document.getElementById("phonenumberValue").value;
+    var numPattern = /^\d{11}$/ 
+    var namePattern = /^[가-힣a-zA-Z]{1,30}$/;
+    if (!namePattern.test(nameValue)) {
+        alert("이름 형식이 올바르지 않습니다.")
+        return;
+    }        
+    if (!numPattern.test(phonenumberValue)) {
+        alert("전화번호 형식이 올바르지 않습니다.")
+        return;
+    }
+    document.findIdForm.submit();
+}
+function checkFindPassword() {
+    var idValue = document.getElementById("idValue").value;
+    var phonenumberValue = document.getElementById("phonenumberValue").value;
+    var nameValue = document.getElementById("nameValue").value;
+    var pattern = /^[a-zA-Z0-9]{6,30}$/;
+    var numPattern = /^\d{11}$/ 
+    var namePattern = /^[가-힣a-zA-Z]{1,30}$/;
+    if (!pattern.test(idValue)) {
+        alert("아이디 형식이 올바르지 않습니다.");
+        return;
+    }
+    if (!numPattern.test(phonenumberValue)) {
+        alert("전화번호 형식이 올바르지 않습니다.")
+        return;
+    }
+    if (!namePattern.test(nameValue)) {
+        alert("이름 형식이 올바르지 않습니다.")
+        return;
+    }    
+    document.findPasswordForm.submit();
+}
 function checkLogin() {
     var idValue = document.getElementById("idValue").value;
     var passwordValue = document.getElementById("passwordValue").value;
