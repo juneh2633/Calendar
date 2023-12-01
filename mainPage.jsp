@@ -10,7 +10,9 @@
 <%@ page import="java.util.TreeMap" %>
 <%@ page import="org.json.simple.JSONObject" %>
 <%
+
     class Schedule {
+
         private String scheduleTime;
         private String scheduleText;
         private int scheduleUid;
@@ -32,7 +34,9 @@
         public String toString() {
             return "{\"scheduleTime\":\"" + scheduleTime + "\", \"scheduleText\":\"" + scheduleText + "\",\"scheduleUid\":\"" + scheduleUid + "\"}";
         }
+
     }
+    
     String id = (String)session.getAttribute("id");
     if(id == null){
         out.print("<script>alert('로그인 해주세요.'); window.location.href='loginPage.jsp';</script>");

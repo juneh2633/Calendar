@@ -7,13 +7,23 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="java.util.Date" %>
 <%@ page import="java.sql.Timestamp" %> 
-<% //jsp 작성 
+<% 
+
+    String id = (String)session.getAttribute("id");
+    String name = (String)session.getAttribute("name");
+    if(id != null){
+%>
+<script>
+    alert("이미 로그인 되어있습니다");
+    location.href = "../mainPage.jsp?idValue=" + '<%=id%>' + "&nameValue=" + '<%=name%>';
+</script>
+<%
+    }
     request.setCharacterEncoding("utf-8");
     String idValue = request.getParameter("idValue");
     String passwordValue = request.getParameter("passwordValue");
     Class.forName("com.mysql.jdbc.Driver");
     Connection connect = DriverManager.getConnection("jdbc:mysql://localhost/calendar", "juneh","2633");
-
     String sql = "SELECT * FROM user WHERE id = ? ";
     PreparedStatement query = connect.prepareStatement(sql);
     query.setString(1, idValue);

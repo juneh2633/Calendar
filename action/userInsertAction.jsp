@@ -50,6 +50,13 @@
     Date currentDate = new Date();
     Timestamp currentTimestamp = new Timestamp(currentDate.getTime());
     Connection connect = DriverManager.getConnection("jdbc:mysql://localhost/calendar", "juneh","2633");
+    String sqlDouble = "SELECT * FROM user WHERE id = ? ";
+    PreparedStatement queryDouble = connect.prepareStatement(sqlDouble);
+    queryDouble.setString(1, idValue);
+    ResultSet resultDouble = queryDouble.executeQuery();
+    if(resultDouble.next()){
+        out.println("<script>alert('오류'); history.back();</script>");
+    }
     String sql = "INSERT INTO user (id, password, phonenumber, name, grade, team, user_deleted) VALUES (?, ?, ?, ?, ?, ? , 0)";
     PreparedStatement query = connect.prepareStatement(sql);
     query.setString(1, idValue);

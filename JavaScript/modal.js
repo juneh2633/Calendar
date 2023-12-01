@@ -66,6 +66,8 @@ function insertScheduleEvent() {
         alert("일정을 넣어주세요");
         return;
     }
+    console.log(modalInputTime.value);
+    console.log(modalInputSchedule.value);
     document.inputScheduleForm.submit();
 }
 
@@ -79,6 +81,7 @@ function showSchedule(idx, month) {
         //일정이 없는경우
         return;
     }   
+    console.log("스케쥴리스트", scheduleList);
     for (var idx = 0; idx < scheduleList.length; idx++){
         var scheduleElementTime = scheduleList[idx].scheduleTime.slice(0, -3);
         var scheduleElementText = scheduleList[idx].scheduleText;
@@ -229,20 +232,28 @@ function makeScheduleInputForm() {
     modalInputScheduleInput.type = "text";
     modalInputScheduleInput.maxLength = "50";
     modalInputScheduleInput.placeholder = "50자 제한";
-
+    // input 요소들을 form에 추가
     form.appendChild(scheduleDayInput);
     form.appendChild(scheduleMonthInput);
     form.appendChild(scheduleYearInput);
     form.appendChild(modalInputTimeInput);
     form.appendChild(modalInputScheduleInput);
+
+    // form을 modalMainInput에 추가
     modalMainInput.appendChild(form);
+
+    // modalMainInput을 modalMain에 추가
     modalMain.appendChild(modalMainInput);
 
+    // 추가 버튼 생성
     var modalInputButton = document.createElement('input');
     modalInputButton.id = "modalInputButton";
     modalInputButton.className = "modalInputButton";
     modalInputButton.type = "button";
     modalInputButton.value = "추가";
     modalInputButton.onclick = insertScheduleEvent;
+
+    // modalMain에 추가 버튼 추가
     modalMain.appendChild(modalInputButton);
+
 }

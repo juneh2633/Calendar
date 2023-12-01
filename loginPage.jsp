@@ -6,7 +6,20 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="java.util.Date" %>
 <%@ page import="java.sql.Timestamp" %> 
+<%
+    String id = (String)session.getAttribute("id");
+    String name = (String)session.getAttribute("name");
+    if(id != null){
+%>
+<script>
+    alert("이미 로그인 되어있습니다");
+    location.href = "mainPage.jsp?idValue=" + '<%=id%>' + "&nameValue=" + '<%=name%>';
+</script>
+<%
+        return;
+    } 
 
+%>
 <!DOCTYPE html>
 <html lang="kr">
 <head>

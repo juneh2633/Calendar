@@ -6,7 +6,6 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="java.util.Date" %>
 <%@ page import="java.sql.Timestamp" %> 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
