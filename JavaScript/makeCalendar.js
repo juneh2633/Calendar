@@ -22,7 +22,7 @@ function makeDateBoxEvent(month) {
         dateBox.className = "dateBox";
         if (day >= idx) {
             dateBox.onclick = (function(index,month) {
-                return function() { modalOpen(index,month); };
+                return function() { modalAppearEvent(idx,month); };
             })(idx,month);           
         }
         document.getElementById("calendarBox").appendChild(dateBox);
@@ -68,10 +68,6 @@ function scheduleCountInput(idx,month) {
         scheduleCount = '9+';
     }
     document.getElementById("scheduleCountBox" + idx).innerHTML = scheduleCount;
-}
-function modalOpen(idx,month) {
-    modalAppearEvent(idx,month);
-    console.log("모달창 달 확인", month);
 }
 function dateToString(day,month) {
     var dayString = day;

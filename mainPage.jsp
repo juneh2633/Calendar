@@ -33,7 +33,6 @@
             return "{\"scheduleTime\":\"" + scheduleTime + "\", \"scheduleText\":\"" + scheduleText + "\",\"scheduleUid\":\"" + scheduleUid + "\"}";
         }
     }
-
     String id = (String)session.getAttribute("id");
     if(id == null){
         out.print("<script>alert('로그인 해주세요.'); window.location.href='loginPage.jsp';</script>");
@@ -98,7 +97,6 @@
         }
     }
     query.close();
-    
     JSONObject scheduleTreeJson = new JSONObject(scheduleTree);
     String scheduleTreeJsonString = scheduleTreeJson.toJSONString();
     //

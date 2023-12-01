@@ -1,3 +1,6 @@
+var pattern = /^[a-zA-Z0-9]{6,30}$/;
+var numPattern = /^\d{11}$/ 
+var namePattern = /^[가-힣a-zA-Z]{1,30}$/;
 function checkSignup() {
     var doubleCheckValue = document.getElementById("doubleCheck").value;
     var idValue = document.getElementById("idValue").value;
@@ -5,9 +8,6 @@ function checkSignup() {
     var passwordCheckValue = document.getElementById("passwordCheckValue").value;
     var phonenumberValue = document.getElementById("phonenumberValue").value;
     var nameValue = document.getElementById("nameValue").value;
-    var pattern = /^[a-zA-Z0-9]{6,30}$/;
-    var numPattern = /^\d{11}$/ 
-    var namePattern = /^[가-힣a-zA-Z]{1,30}$/;
     if (doubleCheckValue == "0") {
         alert("중복확인을 해주세요.");
         return;        
@@ -41,8 +41,6 @@ function checkSignup() {
 function checkFindId() {
     var nameValue = document.getElementById("nameValue").value;
     var phonenumberValue = document.getElementById("phonenumberValue").value;
-    var numPattern = /^\d{11}$/ 
-    var namePattern = /^[가-힣a-zA-Z]{1,30}$/;
     if (!namePattern.test(nameValue)) {
         alert("이름 형식이 올바르지 않습니다.")
         return;
@@ -57,9 +55,6 @@ function checkFindPassword() {
     var idValue = document.getElementById("idValue").value;
     var phonenumberValue = document.getElementById("phonenumberValue").value;
     var nameValue = document.getElementById("nameValue").value;
-    var pattern = /^[a-zA-Z0-9]{6,30}$/;
-    var numPattern = /^\d{11}$/ 
-    var namePattern = /^[가-힣a-zA-Z]{1,30}$/;
     if (!pattern.test(idValue)) {
         alert("아이디 형식이 올바르지 않습니다.");
         return;
@@ -77,9 +72,6 @@ function checkFindPassword() {
 function checkLogin() {
     var idValue = document.getElementById("idValue").value;
     var passwordValue = document.getElementById("passwordValue").value;
-    var pattern = /^[a-zA-Z0-9]{6,30}$/;
-    console.log(idValue);
-    console.log(passwordValue);
     if (!pattern.test(idValue)) {
         alert("아이디를 확인해주세요");
         return;
@@ -91,15 +83,10 @@ function checkLogin() {
     document.loginForm.submit();
 }
 function checkUserUpdate() {
-
     var passwordValue = document.getElementById("passwordValue").value;
     var passwordCheckValue = document.getElementById("passwordCheckValue").value;
     var phonenumberValue = document.getElementById("phonenumberValue").value;
     var nameValue = document.getElementById("nameValue").value;
-    var pattern = /^[a-zA-Z0-9]{6,30}$/;
-    var numPattern = /^\d{11}$/ 
-    var namePattern = /^[가-힣a-zA-Z]{1,30}$/;
-
     if (!pattern.test(passwordValue)) {
         alert("비밀번호 형식이 올바르지 않습니다.");
         return;

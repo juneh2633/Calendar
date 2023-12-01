@@ -32,6 +32,21 @@ form {
     width: 100%;
     height: 100%;
 }
+[type="radio"] {
+    appearance: none;
+    width: 12px;
+    height: 12px;
+    background-color: var(--color-gray);
+    border: 2px solid var(--color-solid);
+    border-radius: 50%;
+    margin-left: 16px;
+    margin-top: 14px;
+
+}
+[type="radio"]:checked {
+    background-color: black;
+    border: 2px solid var(--color-solid);
+}
 
 .inputBox {
     display: flex;
@@ -80,21 +95,6 @@ form {
     text-align: center;
     line-height: 35px;
     margin-left: 10px;
-}
-[type="radio"] {
-    appearance: none;
-    width: 12px;
-    height: 12px;
-    background-color: var(--color-gray);
-    border: 2px solid var(--color-solid);
-    border-radius: 50%;
-    margin-left: 16px;
-    margin-top: 14px;    
-
-}
-[type="radio"]:checked {
-    background-color: black;
-    border: 2px solid var(--color-solid);
 }
 .disappearButton {
     width: 24px;

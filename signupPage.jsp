@@ -67,13 +67,9 @@
                         <input type="button" class="signupButton" value="뒤로가기" onclick="history.back()">
                     </div>
                 </div>
-
             </div>
-        </form>
-        
+        </form>        
     </main>
-    
-
 
      <script src="JavaScript/checkException.js"></script>
      <script src="JavaScript/doubleCheck.js"></script>
